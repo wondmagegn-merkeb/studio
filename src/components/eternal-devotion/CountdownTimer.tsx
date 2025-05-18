@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CalendarClock } from 'lucide-react';
 
@@ -18,32 +18,50 @@ interface CountdownItemProps {
 }
 
 const CountdownInstance: React.FC<CountdownItemProps> = ({ title, targetDate }) => {
-  const calculateTimeLeft = (): TimeLeft => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+
+  const calculateTimeLeftCallback = useCallback((): TimeLeft => {
     const difference = +new Date(targetDate) - +new Date();
-    let timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    let newTimeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
     if (difference > 0) {
-      timeLeft = {
+      newTimeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-    return timeLeft;
-  };
-
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+    return newTimeLeft;
+  }, [targetDate]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+    setTimeLeft(calculateTimeLeftCallback()); // Initial client-side calculation
+
+    const timerId = setInterval(() => {
+      setTimeLeft(calculateTimeLeftCallback());
     }, 1000);
-    return () => clearTimeout(timer);
-  }, [timeLeft, targetDate]); // Added timeLeft and targetDate to dependencies
+
+    return () => clearInterval(timerId); // Cleanup interval on unmount
+  }, [calculateTimeLeftCallback]);
+
+  if (timeLeft === null) {
+    return (
+      <Card className="shadow-lg rounded-xl bg-card/70 backdrop-blur-md border-primary/30">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-2xl font-script text-primary flex items-center gap-2">
+            <CalendarClock className="h-6 w-6" /> {title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-xl text-center text-primary py-4">Loading countdown...</p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   const timerComponents = Object.entries(timeLeft).map(([interval, value]) => {
-    if (value === 0 && interval !== 'seconds' && timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0) return null; 
+    if (value === 0 && interval !== 'seconds' && timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0) return null;
     if (value < 0) return null; // Don't show negative values once passed
     return (
       <div key={interval} className="text-center p-2 bg-background/20 backdrop-blur-sm rounded-lg shadow-md min-w-[60px]">
@@ -70,7 +88,7 @@ const CountdownInstance: React.FC<CountdownItemProps> = ({ title, targetDate }) 
             {timerComponents}
           </div>
         ) : (
-          <p className="text-xl text-center text-primary py-4">Loading countdown...</p>
+          <p className="text-xl text-center text-primary py-4">The moment is here!</p> 
         )}
       </CardContent>
     </Card>

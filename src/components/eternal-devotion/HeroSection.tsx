@@ -11,14 +11,14 @@ interface HeroSectionProps {
 
 export default function HeroSection({ recipientName }: HeroSectionProps) {
   return (
-    <header className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full min-h-screen py-12 px-4 sm:px-8 lg:px-16 bg-black text-white">
+    <header className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full min-h-screen py-12 px-4 sm:px-8 lg:px-16 bg-indigo-900 text-white">
       {/* Left Text Content */}
       <div className="md:w-1/2 lg:w-2/5 space-y-3 md:space-y-5 text-center md:text-left mb-10 md:mb-0 z-10 flex flex-col justify-center">
-        <p className="text-xl md:text-2xl text-secondary font-sans font-medium">A love like ours...</p>
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-script text-pink-400 drop-shadow-md mt-2">
-          For My Beautiful Girl 💖
+        <p className="text-2xl md:text-3xl text-pink-400 font-sans font-semibold">My Guiding Star ✨</p>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-script text-pink-400 drop-shadow-md mt-1">
+          For My<br />Beautiful Girl 💖
         </h1>
-        <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-md mx-auto md:mx-0 font-sans pt-4">
+        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-md mx-auto md:mx-0 font-sans pt-2">
           My love, you are my sunshine and my everything.
         </p>
         <Button size="lg" className="mt-8 shadow-lg hover:shadow-xl transition-shadow bg-primary hover:bg-primary/90 text-primary-foreground self-center md:self-start">
