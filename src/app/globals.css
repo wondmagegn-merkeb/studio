@@ -5,95 +5,95 @@
 
 @layer base {
   :root {
-    --background: 327 67% 94%; /* Light Pink */
-    --foreground: 330 57% 30%; /* Dark Muted Rose */
+    --background: 220 60% 96%; /* Very Light Blue */
+    --foreground: 240 20% 15%; /* Very Dark Desaturated Blue/Near Black */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 330 100% 15%; /* Dark Purple */
+    --card-foreground: 240 20% 15%; /* Dark Desaturated Blue/Near Black */
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 330 100% 15%; /* Dark Purple */
+    --popover-foreground: 240 20% 15%; /* Dark Desaturated Blue/Near Black */
 
-    --primary: 330 76% 43%; /* Deep Rose */
+    --primary: 330 75% 55%; /* Vibrant Pink */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 240 67% 94%; /* Lavender */
-    --secondary-foreground: 240 29% 49%; /* Darker Lavender */
+    --secondary: 260 65% 60%; /* Medium Purple */
+    --secondary-foreground: 0 0% 100%; /* White */
 
-    --muted: 240 67% 90%; /* Lighter Lavender */
-    --muted-foreground: 240 29% 55%; 
+    --muted: 220 50% 92%; /* Light Muted Blue */
+    --muted-foreground: 220 30% 45%; /* Darker Muted Blue */
 
-    --accent: 330 76% 53%; /* Brighter Deep Rose */
+    --accent: 200 85% 50%; /* Bright Blue */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 330 50% 85%; /* Lighter Rose */
-    --input: 330 50% 90%; /* Lighter Rose for input background */
-    --ring: 330 76% 43%; /* Deep Rose */
+    --border: 220 40% 88%; /* Light Blue-Gray */
+    --input: 220 40% 90%; /* Slightly Lighter Blue-Gray for input background */
+    --ring: 330 75% 55%; /* Pink for focus rings */
 
     --radius: 0.75rem; /* Softer rounded corners */
 
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 330 70% 60%; /* Pinkish */
+    --chart-2: 260 60% 65%; /* Purplish */
+    --chart-3: 200 75% 55%; /* Bluish */
+    --chart-4: 300 70% 60%; /* Magenta/Darker Pink */
+    --chart-5: 230 70% 65%; /* Indigo/Darker Blue */
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 60% 97%; /* Very Light Blue for sidebar */
+    --sidebar-foreground: 240 20% 25%; /* Darker blue for sidebar text */
+    --sidebar-primary: 260 65% 55%; /* Purple for active sidebar items */
+    --sidebar-primary-foreground: 0 0% 100%; /* White */
+    --sidebar-accent: 220 50% 93%; /* Very light blue for sidebar hover/accent background */
+    --sidebar-accent-foreground: 260 65% 55%; /* Purple for sidebar hover text */
+    --sidebar-border: 220 40% 85%; /* Light blue-gray sidebar border */
+    --sidebar-ring: 260 65% 55%; /* Purple sidebar ring */
   }
 
   .dark {
-    --background: 330 30% 10%; /* Dark Purple/Rose */
-    --foreground: 327 67% 90%; /* Light Pinkish White */
+    --background: 240 15% 8%; /* Very Dark Blue/Near Black */
+    --foreground: 220 40% 92%; /* Light Bluish Gray */
 
-    --card: 330 25% 15%;
-    --card-foreground: 327 67% 90%;
+    --card: 240 15% 12%; /* Darker Blue/Gray */
+    --card-foreground: 220 40% 92%; /* Light Bluish Gray */
 
-    --popover: 330 25% 15%;
-    --popover-foreground: 327 67% 90%;
+    --popover: 240 15% 12%; /* Darker Blue/Gray */
+    --popover-foreground: 220 40% 92%; /* Light Bluish Gray */
 
-    --primary: 330 76% 60%; /* Lighter Deep Rose for dark mode */
-    --primary-foreground: 330 100% 15%;
+    --primary: 330 80% 65%; /* Lighter Pink for dark mode */
+    --primary-foreground: 330 30% 10%; /* Very Dark Pink/Near Black */
 
-    --secondary: 240 30% 20%; /* Dark Lavender */
-    --secondary-foreground: 240 67% 90%;
+    --secondary: 260 70% 70%; /* Lighter Purple for dark mode */
+    --secondary-foreground: 260 30% 10%; /* Very Dark Purple/Near Black */
 
-    --muted: 240 30% 25%;
-    --muted-foreground: 240 67% 80%;
+    --muted: 240 15% 20%; /* Dark Muted Blue/Gray */
+    --muted-foreground: 240 20% 70%; /* Lighter Muted Blue/Gray */
 
-    --accent: 330 76% 55%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 200 90% 60%; /* Lighter Bright Blue for dark mode */
+    --accent-foreground: 200 30% 10%; /* Very Dark Blue/Near Black */
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 330 25% 25%;
-    --input: 330 25% 25%;
-    --ring: 330 76% 60%;
+    --border: 240 15% 25%; /* Dark Gray Blue */
+    --input: 240 15% 22%; /* Slightly darker input for contrast */
+    --ring: 330 80% 65%; /* Lighter Pink for focus rings */
     
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 330 75% 70%; /* Lighter Pinkish */
+    --chart-2: 260 65% 75%; /* Lighter Purplish */
+    --chart-3: 200 80% 65%; /* Lighter Bluish */
+    --chart-4: 300 75% 70%; /* Lighter Magenta */
+    --chart-5: 230 75% 75%; /* Lighter Indigo */
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 240 15% 10%; /* Dark blue for sidebar */
+    --sidebar-foreground: 220 40% 88%; /* Light bluish gray for sidebar text */
+    --sidebar-primary: 260 70% 65%; /* Lighter purple for active sidebar items */
+    --sidebar-primary-foreground: 260 30% 15%; /* Dark purple/black for text on sidebar primary */
+    --sidebar-accent: 240 15% 15%; /* Slightly lighter dark blue for sidebar hover/accent background */
+    --sidebar-accent-foreground: 260 70% 65%; /* Lighter purple for sidebar hover text */
+    --sidebar-border: 240 15% 20%; /* Dark gray-blue sidebar border */
+    --sidebar-ring: 260 70% 65%; /* Lighter purple sidebar ring */
   }
 }
 
@@ -103,7 +103,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), sans-serif; /* Removed var(--font-geist-sans) */
+    font-family: var(--font-inter), sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     cursor: url('https://cdn-icons-png.flaticon.com/512/833/833472.png'), auto;
