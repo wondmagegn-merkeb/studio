@@ -6,7 +6,8 @@ import Head from 'next/head';
 import { Button } from '@/components/ui/button';
 import { Heart, Gift } from 'lucide-react';
 import ParticleBackground from '@/components/eternal-devotion/ParticleBackground';
-import HeroSection from '@/components/eternal-devotion/HeroSection'; // New Import
+import NavigationBar from '@/components/eternal-devotion/NavigationBar'; // New Import
+import HeroSection from '@/components/eternal-devotion/HeroSection';
 import PhotoGallery from '@/components/eternal-devotion/PhotoGallery';
 import CountdownTimer from '@/components/eternal-devotion/CountdownTimer';
 import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
@@ -24,10 +25,15 @@ export default function EternalDevotionPage() {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
-  const specialDate = "2025-06-01T00:00:00"; // Example date, change as needed
+  // Define countdown items
+  const countdownEvents = [
+    { title: "Her Next Birthday", targetDate: "2025-08-15T00:00:00" }, // Example: August 15th
+    { title: "Our Anniversary", targetDate: "2025-06-01T00:00:00" } // Example: June 1st
+  ];
 
-  const recipientName = "My Beautiful Girl"; // Default or customize
-  const senderName = "Your Loving Partner"; // Default or customize
+
+  const recipientName = "My Beautiful Girl";
+  const senderName = "Your Loving Partner";
 
 
   return (
@@ -38,27 +44,31 @@ export default function EternalDevotionPage() {
       </Head>
 
       <ParticleBackground />
+      <NavigationBar />
 
       <div className="relative z-10 min-h-screen flex flex-col">
-        <HeroSection recipientName={recipientName} /> {/* Using the new HeroSection component */}
+        <div id="home">
+          <HeroSection recipientName={recipientName} />
+        </div>
+        
 
-        <main className="flex-grow container mx-auto px-2 sm:px-4 py-8 space-y-12 md:space-y-16">
+        <main className="flex-grow container mx-auto px-2 sm:px-4 py-8 space-y-16 md:space-y-20">
           <PhotoGallery />
-          <CountdownTimer targetDate={specialDate} />
+          <CountdownTimer countdownItems={countdownEvents} />
           <QuoteCarousel />
 
-          <section className="text-center space-y-4 py-8">
+          <section className="text-center space-y-4 py-8" id="surprise">
             <Button 
               onClick={() => setIsSurpriseMessageVisible(true)}
               size="lg" 
-              className="shadow-lg hover:shadow-xl transition-shadow"
+              className="shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90"
               aria-label="Click for a surprise message"
             >
               <Gift className="mr-2 h-5 w-5" /> A Little Surprise Just For You
             </Button>
             
             <Dialog open={isSurpriseMessageVisible} onOpenChange={setIsSurpriseMessageVisible}>
-              <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl">
+              <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50">
                 <DialogHeader>
                   <DialogTitle className="text-3xl font-script text-primary">A Special Note 💌</DialogTitle>
                 </DialogHeader>
@@ -74,26 +84,30 @@ export default function EternalDevotionPage() {
             </Dialog>
           </section>
           
-          <LoveLetterSection />
-          <TimelineDisplay />
+          <div id="love-letter">
+            <LoveLetterSection />
+          </div>
+          <div id="timeline">
+            <TimelineDisplay />
+          </div>
           <MusicControl />
         </main>
 
-        <footer className="text-center py-8 px-4 mt-12 bg-foreground/5 text-foreground/70">
-          <p className="font-script text-2xl text-primary">With All My Love,</p>
-          <p>{senderName} &amp; {recipientName} 💖</p>
-          {currentYear !== null && <p className="text-xs mt-2">Crafted with adoration in {currentYear}</p>}
+        <footer className="text-center py-10 px-4 mt-16 bg-foreground/5 text-foreground/70 border-t border-border/30">
+          <p className="font-script text-3xl text-primary mb-2">With All My Love,</p>
+          <p className="text-lg">{senderName} &amp; {recipientName} 💖</p>
+          {currentYear !== null && <p className="text-xs mt-3 opacity-70">Crafted with adoration in {currentYear}</p>}
         </footer>
       </div>
 
       <Button
         variant="default"
         size="icon"
-        className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-2xl floating-btn-animation z-50"
+        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-2xl floating-btn-animation z-50 bg-primary hover:bg-primary/80"
         onClick={() => setIsSurpriseMessageVisible(true)}
         aria-label="I love you - reveal surprise message"
       >
-        <Heart className="h-7 w-7" fill="white" />
+        <Heart className="h-8 w-8" fill="currentColor" />
       </Button>
     </>
   );
