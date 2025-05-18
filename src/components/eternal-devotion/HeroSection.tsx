@@ -15,14 +15,11 @@ export default function HeroSection({ recipientName }: HeroSectionProps) {
       {/* Left Text Content */}
       <div className="md:w-1/2 lg:w-2/5 space-y-3 md:space-y-5 text-center md:text-left mb-10 md:mb-0 z-10 flex flex-col justify-center">
         <p className="text-xl md:text-2xl text-secondary font-sans font-medium">A love like ours...</p>
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-bold tracking-tight text-foreground">
-          Is <span className="text-primary">Forever</span>,<br className="hidden xl:block" /> {recipientName}
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-script text-pink-400 drop-shadow-md mt-2">
+          For My Beautiful Girl 💖
         </h1>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-script text-pink-400 drop-shadow-md mt-2">
-          My Guiding Star ✨
-        </h2>
         <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-md mx-auto md:mx-0 font-sans pt-4">
-          This space is a testament to the journey we share, the dreams we build, and the love that lights our way.
+          My love, you are my sunshine and my everything.
         </p>
         <Button size="lg" className="mt-8 shadow-lg hover:shadow-xl transition-shadow bg-primary hover:bg-primary/90 text-primary-foreground self-center md:self-start">
           Discover Our Story <Heart className="ml-2 h-5 w-5" />
