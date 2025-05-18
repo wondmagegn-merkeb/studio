@@ -4,7 +4,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
-import { Menu, Heart, Home, Image as ImageIcon, CalendarDays, ScrollText } from "lucide-react"
+import { Menu, Heart, Home, Image as ImageIcon, CalendarDays, ScrollText, Star } from "lucide-react"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const navLinks = [
@@ -39,9 +39,15 @@ export default function NavigationBar() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[280px] bg-background p-0 pt-6">
-        <div className="mb-6 flex items-center space-x-2 px-6">
-          <Heart className="h-7 w-7 text-primary" />
-          <span className="text-2xl font-script text-primary">Navigation</span>
+        <div className="mb-4 flex flex-col items-center text-center space-y-1 px-6">
+          <div className="flex items-center space-x-2">
+            <Heart className="h-7 w-7 text-primary" />
+            <span className="text-2xl font-script text-primary">Navigation</span>
+          </div>
+          <div className="flex items-center text-sm text-pink-400">
+            <Star className="h-4 w-4 mr-1.5 fill-pink-400 text-pink-400" />
+            My Guiding Star
+          </div>
         </div>
         <nav className="flex flex-col space-y-1 px-3">
           {navLinks.map((link) => (
@@ -64,7 +70,14 @@ export default function NavigationBar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
         <Link href="#home" className="flex items-center space-x-2 group">
           <Heart className="h-8 w-8 text-primary transition-transform group-hover:scale-110 group-hover:animate-pulse" />
-          <span className="font-script text-3xl text-primary hidden sm:inline">Eternal Devotion</span>
+          <div className="hidden sm:flex flex-col items-start">
+            <span className="font-script text-3xl text-primary leading-none">Eternal Devotion</span>
+            <div className="flex items-center text-xs text-pink-400 group-hover:text-pink-500 transition-colors">
+                <Star className="h-3 w-3 mr-1 fill-pink-400 text-pink-400" />
+                My Guiding Star
+            </div>
+          </div>
+           <span className="font-script text-2xl text-primary sm:hidden">Eternal Devotion</span> {/* Fallback for very small screens if needed */}
         </Link>
         {isMobile ? mobileNav : desktopNav}
       </div>
