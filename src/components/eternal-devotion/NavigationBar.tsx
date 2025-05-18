@@ -3,7 +3,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
 import { Menu, Heart, Home, Image as ImageIcon, CalendarDays, ScrollText, Star } from "lucide-react"
 import { useIsMobile } from "@/hooks/use-mobile"
 
@@ -42,7 +42,7 @@ export default function NavigationBar() {
         <div className="mb-4 flex flex-col items-center text-center space-y-1 px-6">
           <div className="flex items-center space-x-2">
             <Heart className="h-7 w-7 text-primary" />
-            <span className="text-2xl font-script text-primary">Navigation</span>
+            <SheetTitle className="text-2xl font-script text-primary">Navigation</SheetTitle>
           </div>
           <div className="flex items-center text-sm text-pink-400">
             <Star className="h-4 w-4 mr-1.5 fill-pink-400 text-pink-400" />
