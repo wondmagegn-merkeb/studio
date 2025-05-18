@@ -4,12 +4,13 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
-import { Menu, Heart, Home, Image as ImageIcon, CalendarDays, ScrollText, Star } from "lucide-react"
+import { Menu, Heart, Home, Image as ImageIcon, CalendarDays, ScrollText, Star, Clapperboard } from "lucide-react" // Added Clapperboard
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const navLinks = [
   { href: "#home", label: "Home", icon: Home },
   { href: "#gallery", label: "Gallery", icon: ImageIcon },
+  { href: "#videos", label: "Our Reels", icon: Clapperboard }, // Added new link
   { href: "#timeline", label: "Our Journey", icon: CalendarDays },
   { href: "#love-letter", label: "Love Note", icon: ScrollText },
 ];
@@ -77,7 +78,7 @@ export default function NavigationBar() {
                 My Guiding Star
             </div>
           </div>
-           <span className="font-script text-2xl text-primary sm:hidden">Eternal Devotion</span> {/* Fallback for very small screens if needed */}
+           <span className="font-script text-2xl text-primary sm:hidden">Eternal Devotion</span>
         </Link>
         {isMobile ? mobileNav : desktopNav}
       </div>

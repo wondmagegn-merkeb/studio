@@ -14,6 +14,7 @@ import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
 import LoveLetterSection from '@/components/eternal-devotion/LoveLetterSection';
 import TimelineDisplay from '@/components/eternal-devotion/TimelineDisplay';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
+import VideoHighlights from '@/components/eternal-devotion/VideoHighlights'; // Added import
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 
 
@@ -26,8 +27,8 @@ export default function EternalDevotionPage() {
   }, []);
 
   const countdownEvents = [
-    { title: "My Queen's Arrival (Gift from God)", targetDate: "2025-08-15T00:00:00" }, // Example: August 15th
-    { title: "Our Second Year With Love", targetDate: "2025-06-01T00:00:00" } // Example: June 1st
+    { title: "My Queen's Arrival (Gift from God)", targetDate: "2025-08-15T00:00:00" }, 
+    { title: "Our Second Year With Love", targetDate: "2025-06-01T00:00:00" } 
   ];
 
 
@@ -85,6 +86,9 @@ export default function EternalDevotionPage() {
           
           <div id="love-letter">
             <LoveLetterSection />
+          </div>
+          <div id="videos"> {/* Added ID for navigation */}
+            <VideoHighlights />
           </div>
           <div id="timeline">
             <TimelineDisplay />
