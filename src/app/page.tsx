@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -19,6 +19,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 export default function EternalDevotionPage() {
   const [isSurpriseMessageVisible, setIsSurpriseMessageVisible] = useState(false);
   const [isLoveLetterModalOpen, setIsLoveLetterModalOpen] = useState(false);
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   const specialDate = "2025-06-01T00:00:00"; // Example date, change as needed
 
@@ -36,8 +41,26 @@ export default function EternalDevotionPage() {
       <ParticleBackground />
 
       <div className="relative z-10 min-h-screen flex flex-col">
-        <header className="text-center py-12 px-4 bg-gradient-to-b from-background to-transparent">
-          <h1 className="text-5xl md:text-7xl font-script text-primary drop-shadow-lg">
+        <header className="text-center py-12 px-4 bg-gradient-to-b from-background to-transparent flex flex-col items-center">
+          {/* Profile Picture */}
+          <div className="mb-6">
+            <Image
+              src="https://placehold.co/150x150.png"
+              alt={`Profile picture of ${recipientName}`}
+              width={150}
+              height={150}
+              className="rounded-full object-cover border-4 border-primary/50 shadow-lg"
+              data-ai-hint="woman portrait"
+              priority
+            />
+          </div>
+
+          {/* Romantic Word */}
+          <h2 className="text-6xl md:text-8xl font-script text-secondary drop-shadow-md mb-2">
+            Adored
+          </h2>
+          
+          <h1 className="text-4xl md:text-6xl font-script text-primary drop-shadow-lg">
             For My Beautiful Girl 💖
           </h1>
           <p className="mt-4 text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto">
@@ -86,7 +109,7 @@ export default function EternalDevotionPage() {
         <footer className="text-center py-8 px-4 mt-12 bg-foreground/5 text-foreground/70">
           <p className="font-script text-2xl text-primary">With All My Love,</p>
           <p>{senderName} &amp; {recipientName} 💖</p>
-          <p className="text-xs mt-2">Crafted with adoration in {new Date().getFullYear()}</p>
+          {currentYear !== null && <p className="text-xs mt-2">Crafted with adoration in {currentYear}</p>}
         </footer>
       </div>
 
@@ -124,3 +147,4 @@ export default function EternalDevotionPage() {
     </>
   );
 }
+
