@@ -4,16 +4,14 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Button } from '@/components/ui/button';
-import { Heart, Gift } from 'lucide-react';
+import { Heart, Gift, Flower2 } from 'lucide-react'; // Changed Rose to Flower2
 import ParticleBackground from '@/components/eternal-devotion/ParticleBackground';
 import NavigationBar from '@/components/eternal-devotion/NavigationBar';
 import HeroSection from '@/components/eternal-devotion/HeroSection';
 import PhotoGallery from '@/components/eternal-devotion/PhotoGallery';
 import CountdownTimer from '@/components/eternal-devotion/CountdownTimer';
 import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
-// import LoveLetterSection from '@/components/eternal-devotion/LoveLetterSection'; // Removed
-import FamilyTree from '@/components/eternal-devotion/FamilyTree'; // Added
-// import TimelineDisplay from '@/components/eternal-devotion/TimelineDisplay'; // Removed
+import FamilyTree from '@/components/eternal-devotion/FamilyTree';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
 import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
@@ -32,9 +30,8 @@ export default function EternalDevotionPage() {
     { title: "Our Second Year With Love", targetDate: "2025-06-01T00:00:00" } 
   ];
 
-
-  const recipientName = "My Beautiful Girl"; // You can customize this
-  const senderName = "Your Loving Partner"; // You can customize this
+  const recipientName = "My Beautiful Girl";
+  const senderName = "Your Loving Partner";
 
 
   return (
@@ -52,7 +49,6 @@ export default function EternalDevotionPage() {
           <HeroSection recipientName={recipientName} />
         </div>
         
-
         <main className="flex-grow container mx-auto px-2 sm:px-4 py-8 space-y-16 md:space-y-20">
           <PhotoGallery />
           <CountdownTimer countdownItems={countdownEvents} />
@@ -62,45 +58,38 @@ export default function EternalDevotionPage() {
             <Button 
               onClick={() => setIsSurpriseMessageVisible(true)}
               size="lg" 
-              className="shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90"
+              className="shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 py-3 px-8 text-lg"
               aria-label="Click for a surprise message"
             >
-              <Gift className="mr-2 h-5 w-5" /> A Little Surprise Just For You
+              <Gift className="mr-2 h-6 w-6" /> A Special Surprise For You
             </Button>
             
             <Dialog open={isSurpriseMessageVisible} onOpenChange={setIsSurpriseMessageVisible}>
-              <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50">
-                <DialogHeader>
-                  <DialogTitle className="text-3xl font-script text-primary">A Special Note 💌</DialogTitle>
-                </DialogHeader>
-                <DialogDescription className="text-xl my-6 text-center text-card-foreground/90">
-                  I love you more than words can ever say. You are my everything, forever and always.
-                </DialogDescription>
-                <DialogFooter>
-                  <DialogClose asChild>
-                    <Button variant="outline">Close</Button>
-                  </DialogClose>
-                </DialogFooter>
+              <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-md p-6 sm:p-8">
+                <div className="flex flex-col items-center justify-center text-center">
+                  <Flower2 className="w-20 h-20 sm:w-24 sm:h-24 text-primary mb-4 sm:mb-6 pulse-gentle" strokeWidth={1.5} />
+                  <DialogHeader className="mb-2 sm:mb-3">
+                    <DialogTitle className="text-3xl sm:text-4xl font-script text-primary">My Dearest Love,</DialogTitle>
+                  </DialogHeader>
+                  <DialogDescription className="text-lg sm:text-xl my-3 sm:my-4 text-card-foreground/90 leading-relaxed">
+                    You are the most precious flower in the garden of my heart. Every moment with you is a dream I never want to wake from. My love for you grows deeper with every passing day.
+                  </DialogDescription>
+                  <DialogFooter className="mt-4 sm:mt-6">
+                    <DialogClose asChild>
+                      <Button variant="outline" className="text-base px-6 py-2">Close</Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </div>
               </DialogContent>
             </Dialog>
           </section>
           
-          {/* 
-          <div id="love-letter">
-             Removed: <LoveLetterSection />
-          </div> 
-          */}
-          <div id="family"> {/* Added ID for navigation */}
+          <div id="family">
             <FamilyTree recipientName={recipientName} senderName={senderName} />
           </div>
           <div id="videos">
             <VideoHighlights />
           </div>
-          {/* 
-          <div id="timeline">
-             Removed: <TimelineDisplay />
-          </div> 
-          */}
           <MusicControl />
         </main>
 
