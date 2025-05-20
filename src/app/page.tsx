@@ -11,10 +11,11 @@ import HeroSection from '@/components/eternal-devotion/HeroSection';
 import PhotoGallery from '@/components/eternal-devotion/PhotoGallery';
 import CountdownTimer from '@/components/eternal-devotion/CountdownTimer';
 import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
-import LoveLetterSection from '@/components/eternal-devotion/LoveLetterSection';
+// import LoveLetterSection from '@/components/eternal-devotion/LoveLetterSection'; // Removed
+import FamilyTree from '@/components/eternal-devotion/FamilyTree'; // Added
 import TimelineDisplay from '@/components/eternal-devotion/TimelineDisplay';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
-import VideoHighlights from '@/components/eternal-devotion/VideoHighlights'; // Added import
+import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 
 
@@ -32,8 +33,8 @@ export default function EternalDevotionPage() {
   ];
 
 
-  const recipientName = "My Beautiful Girl";
-  const senderName = "Your Loving Partner";
+  const recipientName = "My Beautiful Girl"; // You can customize this
+  const senderName = "Your Loving Partner"; // You can customize this
 
 
   return (
@@ -84,10 +85,15 @@ export default function EternalDevotionPage() {
             </Dialog>
           </section>
           
+          {/* 
           <div id="love-letter">
-            <LoveLetterSection />
+             Removed: <LoveLetterSection />
+          </div> 
+          */}
+          <div id="family"> {/* Added ID for navigation */}
+            <FamilyTree recipientName={recipientName} senderName={senderName} />
           </div>
-          <div id="videos"> {/* Added ID for navigation */}
+          <div id="videos">
             <VideoHighlights />
           </div>
           <div id="timeline">
