@@ -3,7 +3,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Play, Pause, Music2, Disc3 } from 'lucide-react'; // Added Disc3
+import { Play, Pause, Music2, Disc3, Album } from 'lucide-react'; // Added Album
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const MusicControl = () => {
@@ -16,32 +16,6 @@ const MusicControl = () => {
   const songDetails = {
     title: "Our Special Tune",
     artist: "A Melody of Love",
-  };
-
-  useEffect(() => {
-    if (audioRef.current && audioSrc) {
-      audioRef.current.src = audioSrc;
-      // Optional: auto-play if an audio source is provided.
-      // audioRef.current.play().catch(error => console.error("Error auto-playing audio:", error));
-      // setIsPlaying(true);
-    } else if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      setIsPlaying(false);
-    }
-  }, [audioSrc]);
-
-  const togglePlayPause = () => {
-    if (!audioRef.current || !audioSrc) {
-      console.warn("No audio source loaded. Please set the 'audioSrc' variable.");
-      return;
-    }
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(error => console.error("Error playing audio:", error));
-    }
-    setIsPlaying(!isPlaying);
   };
 
   const lyrics = `
@@ -70,6 +44,37 @@ Forever and always, my heart belongs to you,
 In this eternal devotion, me and you.
   `;
 
+  const fiveFavoriteSongs = [
+    { title: "Moonlit Serenade", artist: "The Nightingales" },
+    { title: "Echoes of Your Laughter", artist: "Joyful Sounds" },
+    { title: "Stardust & Daydreams", artist: "Cosmic Harmonies" },
+    { title: "Our Forever Waltz", artist: "Timeless Melodies" },
+    { title: "Sunrise with You", artist: "Aurora Beats" },
+  ];
+
+  useEffect(() => {
+    if (audioRef.current && audioSrc) {
+      audioRef.current.src = audioSrc;
+    } else if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  }, [audioSrc]);
+
+  const togglePlayPause = () => {
+    if (!audioRef.current || !audioSrc) {
+      console.warn("No audio source loaded. Please set the 'audioSrc' variable.");
+      return;
+    }
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(error => console.error("Error playing audio:", error));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <section className="py-8 px-4 text-center">
       <Card className="max-w-xl mx-auto shadow-lg rounded-lg bg-card/70 backdrop-blur-md border-primary/30">
@@ -96,12 +101,29 @@ In this eternal devotion, me and you.
           
           <audio ref={audioRef} loop aria-hidden="true" />
           
-          <div className="text-left max-h-60 overflow-y-auto p-4 bg-background/50 rounded-md whitespace-pre-line text-sm text-foreground/90">
+          <div className="text-left max-h-60 overflow-y-auto p-4 bg-background/50 rounded-md whitespace-pre-line text-sm text-foreground/90 mb-6">
             {lyrics.trim()}
           </div>
 
+          <div className="pt-4 border-t border-border/20">
+            <h4 className="text-xl font-script text-secondary mb-4 flex items-center justify-center gap-2">
+              <Album className="h-5 w-5" /> More Melodies That Whisper 'Us':
+            </h4>
+            <ul className="space-y-2 text-sm text-foreground/80 text-left max-w-md mx-auto">
+              {fiveFavoriteSongs.map((song, index) => (
+                <li key={index} className="flex items-start gap-2 pl-4">
+                  <Music2 className="h-4 w-4 text-primary mt-1 shrink-0" />
+                  <div>
+                    <span className="font-semibold text-foreground/90">{song.title}</span>
+                    <span className="text-xs block text-muted-foreground"> - {song.artist}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {!audioSrc && (
-            <p className="text-xs text-muted-foreground mt-3 p-2 bg-muted/50 rounded-md">
+            <p className="text-xs text-muted-foreground mt-6 p-2 bg-muted/50 rounded-md">
               To play 'Our Song', please update the <code>audioSrc</code> variable in the <code>MusicControl.tsx</code> file with your music file's path.
             </p>
           )}
