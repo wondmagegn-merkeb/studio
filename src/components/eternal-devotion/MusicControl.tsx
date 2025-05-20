@@ -3,7 +3,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Play, Pause, Music2, Disc3, Album } from 'lucide-react'; // Added Album
+import { Play, Pause, Music2, Disc3, Album } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const MusicControl = () => {
@@ -55,7 +55,16 @@ In this eternal devotion, me and you.
   useEffect(() => {
     if (audioRef.current && audioSrc) {
       audioRef.current.src = audioSrc;
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(error => {
+          console.warn("Audio autoplay failed. User interaction might be required.", error);
+          setIsPlaying(false); // Ensure isPlaying is false if autoplay fails
+        });
     } else if (audioRef.current) {
+      // Ensure player is reset if no audioSrc
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       setIsPlaying(false);
@@ -69,10 +78,15 @@ In this eternal devotion, me and you.
     }
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      audioRef.current.play().catch(error => console.error("Error playing audio:", error));
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch(error => {
+          console.error("Error playing audio:", error);
+          setIsPlaying(false); // Stay false if play fails
+        });
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -124,7 +138,7 @@ In this eternal devotion, me and you.
 
           {!audioSrc && (
             <p className="text-xs text-muted-foreground mt-6 p-2 bg-muted/50 rounded-md">
-              To play 'Our Song', please update the <code>audioSrc</code> variable in the <code>MusicControl.tsx</code> file with your music file's path.
+              To play 'Our Song', please update the <code>audioSrc</code> variable in the <code>MusicControl.tsx</code> file with your music file's path. Autoplay will be attempted.
             </p>
           )}
         </CardContent>
