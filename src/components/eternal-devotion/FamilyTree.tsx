@@ -76,32 +76,38 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ recipientName, senderName }) =>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="flex flex-col md:flex-row items-center justify-around gap-6">
-            <div className="flex flex-col items-center space-y-2">
-              <Avatar className="w-28 h-28 border-4 border-primary">
-                <AvatarImage src="https://placehold.co/128x128.png" alt={`${recipientName} at Wachemo University`} data-ai-hint="woman university graduate" />
-                <AvatarFallback>{recipientName.charAt(0)}</AvatarFallback>
-              </Avatar>
-              <p className="font-semibold text-lg text-foreground">{recipientName}</p>
-              <div className="flex items-center text-sm text-muted-foreground gap-1">
-                <MapPin className="w-4 h-4 text-secondary" /> Debretabor
+          <div className="flex flex-col md:flex-row items-center justify-around gap-6 md:gap-8">
+            {/* Recipient Profile Card */}
+            <div className="profile-card-container">
+              <div className="profile-card-3d flex flex-col items-center space-y-3 bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+                <Avatar className="w-28 h-28 border-4 border-primary">
+                  <AvatarImage src="https://placehold.co/128x128.png" alt={`${recipientName} at Wachemo University`} data-ai-hint="woman university graduate" />
+                  <AvatarFallback>{recipientName.charAt(0)}</AvatarFallback>
+                </Avatar>
+                <p className="font-semibold text-lg text-foreground">{recipientName}</p>
+                <div className="flex items-center text-sm text-muted-foreground gap-1">
+                  <MapPin className="w-4 h-4 text-secondary" /> Debretabor
+                </div>
               </div>
             </div>
             
-            <Heart className="w-8 h-8 text-primary hidden md:block" />
+            <Heart className="w-8 h-8 text-primary hidden md:block self-center" />
 
-            <div className="flex flex-col items-center space-y-2">
-              <Avatar className="w-28 h-28 border-4 border-primary">
-                <AvatarImage src="https://placehold.co/128x128.png" alt={`${senderName} at Wachemo University`} data-ai-hint="man university graduate" />
-                <AvatarFallback>{senderName.charAt(0)}</AvatarFallback>
-              </Avatar>
-              <p className="font-semibold text-lg text-foreground">{senderName}</p>
-              <div className="flex items-center text-sm text-muted-foreground gap-1">
-                <MapPin className="w-4 h-4 text-secondary" /> Hawassa
+            {/* Sender Profile Card */}
+            <div className="profile-card-container">
+              <div className="profile-card-3d flex flex-col items-center space-y-3 bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+                <Avatar className="w-28 h-28 border-4 border-primary">
+                  <AvatarImage src="https://placehold.co/128x128.png" alt={`${senderName} at Wachemo University`} data-ai-hint="man university graduate" />
+                  <AvatarFallback>{senderName.charAt(0)}</AvatarFallback>
+                </Avatar>
+                <p className="font-semibold text-lg text-foreground">{senderName}</p>
+                <div className="flex items-center text-sm text-muted-foreground gap-1">
+                  <MapPin className="w-4 h-4 text-secondary" /> Hawassa
+                </div>
               </div>
             </div>
           </div>
-          <div className="text-center text-muted-foreground italic flex items-center justify-center gap-2">
+          <div className="text-center text-muted-foreground italic flex items-center justify-center gap-2 pt-4">
              <GraduationCap className="w-5 h-5 text-accent" /> Our journey began at Wachemo University.
           </div>
         </CardContent>
