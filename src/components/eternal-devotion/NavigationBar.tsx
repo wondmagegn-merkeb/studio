@@ -4,15 +4,15 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
-import { Menu, Heart, Home, Image as ImageIcon, CalendarDays, Users, Star, Clapperboard } from "lucide-react" // Added Users, removed ScrollText
+import { Menu, Heart, Home, Image as ImageIcon, Users, Star, Clapperboard } from "lucide-react" // Removed CalendarDays
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const navLinks = [
   { href: "#home", label: "Home", icon: Home },
   { href: "#gallery", label: "Gallery", icon: ImageIcon },
   { href: "#videos", label: "Our Reels", icon: Clapperboard },
-  { href: "#family", label: "Our Future", icon: Users }, // Changed from Love Note to Family
-  { href: "#timeline", label: "Our Journey", icon: CalendarDays },
+  { href: "#family", label: "Our Future", icon: Users },
+  // { href: "#timeline", label: "Our Journey", icon: CalendarDays }, // Removed
 ];
 
 export default function NavigationBar() {

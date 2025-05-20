@@ -13,7 +13,7 @@ import CountdownTimer from '@/components/eternal-devotion/CountdownTimer';
 import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
 // import LoveLetterSection from '@/components/eternal-devotion/LoveLetterSection'; // Removed
 import FamilyTree from '@/components/eternal-devotion/FamilyTree'; // Added
-import TimelineDisplay from '@/components/eternal-devotion/TimelineDisplay';
+// import TimelineDisplay from '@/components/eternal-devotion/TimelineDisplay'; // Removed
 import MusicControl from '@/components/eternal-devotion/MusicControl';
 import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
@@ -96,9 +96,11 @@ export default function EternalDevotionPage() {
           <div id="videos">
             <VideoHighlights />
           </div>
+          {/* 
           <div id="timeline">
-            <TimelineDisplay />
-          </div>
+             Removed: <TimelineDisplay />
+          </div> 
+          */}
           <MusicControl />
         </main>
 
