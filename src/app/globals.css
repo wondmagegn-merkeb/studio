@@ -5,95 +5,95 @@
 
 @layer base {
   :root {
-    --background: 270 60% 97%; /* Light Lilac White */
-    --foreground: 270 30% 15%; /* Deep Indigo */
+    --background: 270 40% 97%; /* Very Light Violet/Pastel */
+    --foreground: 270 25% 20%; /* Dark Violet/Indigo */
 
-    --card: 270 70% 99%; /* Very Pale Lilac */
-    --card-foreground: 270 30% 15%; /* Deep Indigo */
+    --card: 270 50% 99%; /* Almost white with violet tint */
+    --card-foreground: 270 25% 20%; /* Dark Violet/Indigo */
 
-    --popover: 270 70% 99%; /* Very Pale Lilac */
-    --popover-foreground: 270 30% 15%; /* Deep Indigo */
+    --popover: 270 50% 99%; /* Almost white with violet tint */
+    --popover-foreground: 270 25% 20%; /* Dark Violet/Indigo */
 
-    --primary: 330 85% 60%; /* Vibrant Pink */
+    --primary: 270 70% 55%; /* Rich Violet */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 240 80% 65%; /* Bright Royal Blue */
+    --secondary: 330 80% 75%; /* Soft Pink */
     --secondary-foreground: 0 0% 100%; /* White */
 
-    --muted: 270 40% 94%; /* Muted Lilac */
-    --muted-foreground: 270 25% 40%; /* Muted Dark Purple */
+    --muted: 270 30% 94%; /* Muted Violet */
+    --muted-foreground: 270 20% 45%; /* Darker Muted Violet */
 
-    --accent: 280 75% 65%; /* Vivid Purple */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 240 60% 90%; /* Lavender */
+    --accent-foreground: 270 25% 20%; /* Dark Violet/Indigo for text on Lavender */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 40% 88%; /* Soft Lilac Border */
-    --input: 270 50% 95%; /* Very Light Lilac for input background */
-    --ring: 330 85% 60%; /* Primary Pink for focus rings */
+    --border: 270 30% 88%; /* Soft Violet Border */
+    --input: 270 40% 95%; /* Very Light Violet for input background */
+    --ring: 270 70% 55%; /* Primary Violet for focus rings */
 
     --radius: 0.75rem;
 
-    --chart-1: 330 80% 65%; /* Pink */
-    --chart-2: 240 75% 70%; /* Blue */
-    --chart-3: 280 70% 70%; /* Purple */
-    --chart-4: 210 70% 70%; /* Lighter Blue */
-    --chart-5: 300 60% 75%; /* Orchid Purple */
+    --chart-1: 270 70% 55%; /* Violet (Primary) */
+    --chart-2: 330 80% 75%; /* Pink (Secondary) */
+    --chart-3: 240 60% 90%; /* Lavender (Accent) */
+    --chart-4: 250 70% 65%; /* Blue-ish Violet */
+    --chart-5: 300 65% 70%; /* Magenta/Orchid */
 
-    --sidebar-background: 270 60% 98%; /* Very Light Lilac Tint */
-    --sidebar-foreground: 270 40% 25%; /* Dark Indigo */
-    --sidebar-primary: 330 80% 65%; /* Main Pink for active sidebar items */
+    --sidebar-background: 270 50% 98%; /* Very Light Violet Tint */
+    --sidebar-foreground: 270 30% 25%; /* Dark Indigo/Violet */
+    --sidebar-primary: 270 70% 55%; /* Main Violet for active sidebar items */
     --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 270 50% 94%; /* Light Lilac for hover */
-    --sidebar-accent-foreground: 330 80% 65%; /* Main Pink for hover text */
-    --sidebar-border: 270 40% 90%; /* Soft Lilac Border */
-    --sidebar-ring: 330 80% 65%; /* Main Pink Ring */
+    --sidebar-accent: 270 40% 94%; /* Light Violet for hover */
+    --sidebar-accent-foreground: 270 70% 55%; /* Main Violet for hover text */
+    --sidebar-border: 270 30% 90%; /* Soft Violet Border */
+    --sidebar-ring: 270 70% 55%; /* Main Violet Ring */
   }
 
   .dark {
-    --background: 270 15% 8%; /* Very Dark Purple/Almost Black */
-    --foreground: 300 70% 92%; /* Light Pinkish Lavender */
+    --background: 270 15% 10%; /* Very Dark Violet */
+    --foreground: 270 30% 90%; /* Light Violet/Lavender */
 
-    --card: 270 15% 12%; /* Slightly Lighter Dark Purple */
-    --card-foreground: 300 70% 92%; /* Light Pinkish Lavender */
+    --card: 270 15% 14%; /* Slightly Lighter Dark Violet */
+    --card-foreground: 270 30% 90%; /* Light Violet/Lavender */
 
-    --popover: 270 15% 12%; /* Slightly Lighter Dark Purple */
-    --popover-foreground: 300 70% 92%; /* Light Pinkish Lavender */
+    --popover: 270 15% 14%; /* Slightly Lighter Dark Violet */
+    --popover-foreground: 270 30% 90%; /* Light Violet/Lavender */
 
-    --primary: 335 90% 70%; /* Brighter, more vivid Pink */
-    --primary-foreground: 270 10% 10%; /* Near Black for contrast */
+    --primary: 270 75% 70%; /* Brighter Violet */
+    --primary-foreground: 270 10% 15%; /* Dark Violet for text on primary */
 
-    --secondary: 230 85% 70%; /* Brighter, Electric Blue */
-    --secondary-foreground: 270 10% 10%; /* Near Black for contrast */
+    --secondary: 330 70% 65%; /* A noticeable Pink */
+    --secondary-foreground: 270 10% 15%; /* Dark Violet for text on secondary */
 
-    --muted: 270 10% 18%; /* Dark Muted Purple/Blue */
-    --muted-foreground: 280 40% 75%; /* Lighter Muted Purple */
+    --muted: 270 10% 20%; /* Dark Muted Violet */
+    --muted-foreground: 270 20% 70%; /* Lighter Muted Violet */
 
-    --accent: 285 85% 75%; /* Brighter, Vivid Purple */
-    --accent-foreground: 270 10% 10%; /* Near Black for contrast */
+    --accent: 240 70% 80%; /* Brighter Lavender */
+    --accent-foreground: 270 15% 10%; /* Very Dark Violet for text on Lavender */
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 10% 20%; /* Dark Purple/Blue Border */
-    --input: 270 10% 16%; /* Slightly darker input for contrast */
-    --ring: 335 90% 70%; /* Primary Pink for focus rings */
+    --border: 270 10% 25%; /* Dark Violet Border */
+    --input: 270 10% 18%; /* Slightly darker input for contrast */
+    --ring: 270 75% 70%; /* Primary Violet for focus rings */
     
-    --chart-1: 335 80% 70%; /* Pink */
-    --chart-2: 230 75% 65%; /* Blue */
-    --chart-3: 285 80% 70%; /* Purple */
-    --chart-4: 200 75% 65%; /* Cyan/Blue */
-    --chart-5: 300 70% 75%; /* Orchid Purple */
+    --chart-1: 270 75% 70%; /* Violet (Primary) */
+    --chart-2: 330 70% 65%; /* Pink (Secondary) */
+    --chart-3: 240 70% 80%; /* Lavender (Accent) */
+    --chart-4: 250 70% 60%; /* Blue-ish Violet */
+    --chart-5: 300 65% 65%; /* Magenta/Orchid */
 
-    --sidebar-background: 270 15% 10%; /* Dark Purple, slightly lighter than main dark bg */
-    --sidebar-foreground: 300 60% 88%; /* Light Pinkish Lavender */
-    --sidebar-primary: 335 85% 68%; /* Bright Pink for active items */
-    --sidebar-primary-foreground: 270 5% 12%; /* Dark Purple/Near Black for text */
-    --sidebar-accent: 270 15% 15%; /* Slightly lighter dark purple for hover */
-    --sidebar-accent-foreground: 335 85% 68%; /* Bright Pink for hover text */
-    --sidebar-border: 270 10% 18%; /* Dark Purple Border */
-    --sidebar-ring: 335 85% 68%; /* Bright Pink Ring */
+    --sidebar-background: 270 15% 12%; /* Dark Violet, slightly lighter than main dark bg */
+    --sidebar-foreground: 270 40% 88%; /* Light Lavender */
+    --sidebar-primary: 270 75% 70%; /* Bright Violet for active items */
+    --sidebar-primary-foreground: 270 5% 15%; /* Dark Violet for text */
+    --sidebar-accent: 270 15% 18%; /* Slightly lighter dark violet for hover */
+    --sidebar-accent-foreground: 270 75% 70%; /* Bright Violet for hover text */
+    --sidebar-border: 270 10% 22%; /* Dark Violet Border */
+    --sidebar-ring: 270 75% 70%; /* Bright Violet Ring */
   }
 }
 
@@ -106,7 +106,6 @@
     font-family: var(--font-inter), sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
-    /* cursor: url('https://cdn-icons-png.flaticon.com/512/833/833472.png'), auto; /* Romantic cursor */
   }
   h1, h2, h3, .font-script {
     font-family: var(--font-great-vibes), cursive;
@@ -169,7 +168,6 @@
     50% { transform: scale(1.1); opacity: 1; }
   }
 
-  /* 3D Hover Effect for Profile Cards */
   .profile-card-container {
     perspective: 1000px;
   }
