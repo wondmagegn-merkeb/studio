@@ -4,66 +4,72 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
-import { Menu, Heart, Home, Image as ImageIcon, Users, Star, Clapperboard } from "lucide-react" // Removed CalendarDays
+import { Menu, Heart, Home, Image as ImageIcon, Users, Star, Clapperboard } from "lucide-react"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { ThemeToggleButton } from "@/components/theme-toggle-button";
 
 const navLinks = [
   { href: "#home", label: "Home", icon: Home },
   { href: "#gallery", label: "Gallery", icon: ImageIcon },
   { href: "#videos", label: "Our Reels", icon: Clapperboard },
   { href: "#family", label: "Our Future", icon: Users },
-  // { href: "#timeline", label: "Our Journey", icon: CalendarDays }, // Removed
 ];
 
 export default function NavigationBar() {
   const isMobile = useIsMobile();
 
-  const desktopNav = (
-    <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-      {navLinks.map((link) => (
-        <Button key={link.label} variant="ghost" asChild className="text-sm lg:text-base text-foreground hover:bg-primary/10 hover:text-primary px-3 py-2">
-          <Link href={link.href} className="flex items-center gap-2">
-            <link.icon className="h-4 w-4" />
-            {link.label}
-          </Link>
-        </Button>
-      ))}
-    </nav>
+  const desktopNavControls = (
+    <div className="flex items-center space-x-1 lg:space-x-2">
+      <nav className="flex items-center space-x-1 lg:space-x-2">
+        {navLinks.map((link) => (
+          <Button key={link.label} variant="ghost" asChild className="text-sm lg:text-base text-foreground hover:bg-primary/10 hover:text-primary px-3 py-2">
+            <Link href={link.href} className="flex items-center gap-2">
+              <link.icon className="h-4 w-4" />
+              {link.label}
+            </Link>
+          </Button>
+        ))}
+      </nav>
+      <ThemeToggleButton />
+    </div>
   );
 
-  const mobileNav = (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="md:hidden text-primary border-primary hover:bg-primary/10">
-          <Menu className="h-5 w-5" />
-          <span className="sr-only">Open navigation menu</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="left" className="w-[280px] bg-background p-0 pt-6">
-        <div className="mb-4 flex flex-col items-center text-center space-y-1 px-6">
-          <div className="flex items-center space-x-2">
-            <Heart className="h-7 w-7 text-primary" />
-            <SheetTitle className="text-2xl font-script text-primary">Navigation</SheetTitle>
+  const mobileNavControls = (
+    <div className="flex items-center gap-2">
+      <ThemeToggleButton />
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline" size="icon" className="md:hidden text-primary border-primary hover:bg-primary/10">
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Open navigation menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-[280px] bg-background p-0 pt-6">
+          <div className="mb-4 flex flex-col items-center text-center space-y-1 px-6">
+            <div className="flex items-center space-x-2">
+              <Heart className="h-7 w-7 text-primary" />
+              <SheetTitle className="text-2xl font-script text-primary">Navigation</SheetTitle>
+            </div>
+            <div className="flex items-center text-sm text-pink-400">
+              <Star className="h-4 w-4 mr-1.5 fill-pink-400 text-pink-400" />
+              My Guiding Star
+            </div>
           </div>
-          <div className="flex items-center text-sm text-pink-400">
-            <Star className="h-4 w-4 mr-1.5 fill-pink-400 text-pink-400" />
-            My Guiding Star
-          </div>
-        </div>
-        <nav className="flex flex-col space-y-1 px-3">
-          {navLinks.map((link) => (
-            <SheetClose key={link.label} asChild>
-              <Button variant="ghost" asChild className="justify-start text-lg text-foreground hover:bg-primary/10 hover:text-primary p-3">
-                <Link href={link.href} className="flex items-center gap-3">
-                  <link.icon className="h-5 w-5" />
-                  {link.label}
-                </Link>
-              </Button>
-            </SheetClose>
-          ))}
-        </nav>
-      </SheetContent>
-    </Sheet>
+          <nav className="flex flex-col space-y-1 px-3">
+            {navLinks.map((link) => (
+              <SheetClose key={link.label} asChild>
+                <Button variant="ghost" asChild className="justify-start text-lg text-foreground hover:bg-primary/10 hover:text-primary p-3">
+                  <Link href={link.href} className="flex items-center gap-3">
+                    <link.icon className="h-5 w-5" />
+                    {link.label}
+                  </Link>
+                </Button>
+              </SheetClose>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
+    </div>
   );
 
   return (
@@ -80,7 +86,7 @@ export default function NavigationBar() {
           </div>
            <span className="font-script text-2xl text-primary sm:hidden">Eternal Devotion</span>
         </Link>
-        {isMobile ? mobileNav : desktopNav}
+        {isMobile ? mobileNavControls : desktopNavControls}
       </div>
     </header>
   );

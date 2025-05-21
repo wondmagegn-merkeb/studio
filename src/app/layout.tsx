@@ -1,16 +1,9 @@
 
 import type { Metadata } from 'next';
-// Removed: import { Geist_Sans } from 'next/font/google';
 import { greatVibes, inter } from '@/lib/fonts';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-// Removed: import { GenkitProvider } from '@genkit-ai/next/client';
-
-
-// Removed: const geistSans = Geist_Sans({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-// });
+import { ThemeProvider } from '@/contexts/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Eternal Devotion',
@@ -23,10 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${greatVibes.variable} ${inter.variable} antialiased`}>
-        {children}
-        <Toaster />
+        <ThemeProvider
+          defaultTheme="light"
+          storageKey="eternal-devotion-theme"
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
