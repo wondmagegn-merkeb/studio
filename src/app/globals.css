@@ -5,72 +5,74 @@
 
 @layer base {
   :root {
-    --background: 300 100% 97%; /* Very Light Pink/Lavender */
-    --foreground: 330 60% 25%; /* Dark Rose/Plum */
+    /* Light Mode - Violet Dominant Theme */
+    --background: 270 100% 98%; /* Very Light Lavender */
+    --foreground: 270 40% 25%; /* Dark Violet */
 
-    --card: 300 100% 99%; /* Almost white with pink tint */
-    --card-foreground: 330 60% 25%; /* Dark Rose/Plum */
+    --card: 270 100% 99%; /* Almost white with lavender tint */
+    --card-foreground: 270 40% 25%;
 
-    --popover: 300 100% 99%; /* Almost white with pink tint */
-    --popover-foreground: 330 60% 25%; /* Dark Rose/Plum */
+    --popover: 270 100% 99%;
+    --popover-foreground: 270 40% 25%;
 
-    --primary: 330 85% 55%; /* Deep Rose (Pink-Red) */
+    --primary: 270 70% 55%; /* Rich Violet */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 270 70% 75%; /* Lavender (Purple) */
-    --secondary-foreground: 0 0% 100%; /* White */
+    --secondary: 330 80% 70%; /* Soft Pink */
+    --secondary-foreground: 330 50% 20%; /* Darker Pink for contrast */
 
-    --muted: 300 50% 94%; /* Muted Pink/Lavender */
-    --muted-foreground: 330 40% 45%; /* Darker Muted Rose */
+    --muted: 270 50% 94%; /* Muted Lavender */
+    --muted-foreground: 270 40% 45%; /* Darker Muted Violet */
 
-    --accent: 240 80% 80%; /* Soft Blue */
-    --accent-foreground: 240 60% 25%; /* Dark Blue for text on Soft Blue */
+    --accent: 210 80% 75%; /* Soft Sky Blue */
+    --accent-foreground: 210 60% 25%; /* Dark Blue for text on Soft Blue */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 300 50% 88%; /* Soft Pink/Lavender Border */
-    --input: 300 60% 95%; /* Very Light Pink/Lavender for input background */
-    --ring: 330 85% 55%; /* Primary Deep Rose for focus rings */
+    --border: 270 50% 88%; /* Soft Lavender Border */
+    --input: 270 60% 95%; /* Very Light Lavender for input background */
+    --ring: 270 70% 55%; /* Primary Rich Violet for focus rings */
 
     --radius: 0.75rem;
 
-    --chart-1: 330 85% 55%; /* Deep Rose */
-    --chart-2: 270 70% 75%; /* Lavender */
-    --chart-3: 240 80% 80%; /* Soft Blue */
-    --chart-4: 300 70% 65%; /* Orchid Purple */
-    --chart-5: 340 80% 70%; /* Watermelon Pink */
+    --chart-1: 270 70% 55%; /* Rich Violet */
+    --chart-2: 330 80% 70%; /* Soft Pink */
+    --chart-3: 210 80% 75%; /* Soft Sky Blue */
+    --chart-4: 280 60% 65%; /* Medium Purple */
+    --chart-5: 300 70% 70%; /* Orchid Pink */
 
-    --sidebar-background: 300 60% 98%; /* Very Light Pink/Lavender tint for sidebar */
-    --sidebar-foreground: 330 50% 30%; /* Dark Rose/Plum for sidebar text */
-    --sidebar-primary: 330 85% 55%; /* Main Deep Rose for active sidebar items */
+    --sidebar-background: 270 60% 98%; /* Very Light Lavender tint for sidebar */
+    --sidebar-foreground: 270 50% 30%; /* Dark Violet for sidebar text */
+    --sidebar-primary: 270 70% 55%; /* Main Rich Violet for active sidebar items */
     --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 300 40% 94%; /* Light Pink/Lavender for hover */
-    --sidebar-accent-foreground: 330 85% 55%; /* Main Deep Rose for hover text */
-    --sidebar-border: 300 30% 90%; /* Soft Pink/Lavender Border */
-    --sidebar-ring: 330 85% 55%; /* Main Deep Rose Ring */
+    --sidebar-accent: 270 40% 94%; /* Light Lavender for hover */
+    --sidebar-accent-foreground: 270 70% 55%; /* Main Rich Violet for hover text */
+    --sidebar-border: 270 30% 90%; /* Soft Lavender Border */
+    --sidebar-ring: 270 70% 55%; /* Main Rich Violet Ring */
   }
 
   .dark {
+    /* Dark Mode - Modern Bluesy Blue Background with Violet/Pink Highlights */
     --background: 220 25% 12%; /* Deep, slightly desaturated navy blue */
     --foreground: 220 15% 88%; /* Light, cool grey-blue */
 
     --card: 220 25% 16%; /* Slightly lighter navy for cards */
-    --card-foreground: 220 15% 88%; /* Light, cool grey-blue */
+    --card-foreground: 220 15% 88%;
 
-    --popover: 220 25% 16%; /* Slightly lighter navy for popovers */
-    --popover-foreground: 220 15% 88%; /* Light, cool grey-blue */
+    --popover: 220 25% 16%;
+    --popover-foreground: 220 15% 88%;
 
-    --primary: 210 80% 55%; /* Vibrant Blue from MealAttend screenshot */
+    --primary: 210 80% 55%; /* Vibrant Blue from MealAttend screenshot for dark mode primary actions */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 320 70% 70%; /* Bright Pink/Magenta (contrasts well) */
+    --secondary: 270 70% 65%; /* Violet (Wife's favorite, as secondary accent) */
     --secondary-foreground: 0 0% 100%; /* White */
 
     --muted: 220 20% 20%; /* Darker, muted blue */
     --muted-foreground: 220 15% 65%; /* Lighter, muted grey-blue */
 
-    --accent: 270 70% 75%; /* Clearer Violet/Lavender for accents on the dark blue */
+    --accent: 330 70% 70%; /* Soft Pink (as accent) */
     --accent-foreground: 220 25% 12%; /* Dark navy for text on accent */
 
     --destructive: 0 60% 50%; /* Adjusted for dark mode contrast */
@@ -80,20 +82,20 @@
     --input: 220 20% 18%; /* Slightly darker input background */
     --ring: 210 80% 55%; /* Primary Vibrant Blue for focus rings */
     
-    --chart-1: 210 80% 55%; /* Vibrant Blue (Primary) */
-    --chart-2: 320 70% 70%; /* Pink (Secondary) */
-    --chart-3: 270 70% 75%; /* Violet (Accent) */
+    --chart-1: 210 80% 55%; /* Vibrant Blue (Primary Dark) */
+    --chart-2: 270 70% 65%; /* Violet (Secondary Dark) */
+    --chart-3: 330 70% 70%; /* Soft Pink (Accent Dark) */
     --chart-4: 250 65% 65%; /* Blue-ish Violet */
     --chart-5: 300 60% 70%; /* Magenta/Orchid */
 
-    --sidebar-background: 220 28% 14%; /* Slightly different shade of dark blue for sidebar */
-    --sidebar-foreground: 220 20% 85%; /* Light cool grey-blue */
-    --sidebar-primary: 210 80% 55%; /* Vibrant Blue for active items */
-    --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 220 25% 20%; /* Darker blue for hover */
-    --sidebar-accent-foreground: 210 80% 55%; /* Vibrant Blue for hover text */
-    --sidebar-border: 220 20% 25%; /* Muted blue border */
-    --sidebar-ring: 210 80% 55%; /* Vibrant Blue Ring */
+    --sidebar-background: 220 28% 14%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 210 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 20%;
+    --sidebar-accent-foreground: 210 80% 55%;
+    --sidebar-border: 220 20% 25%;
+    --sidebar-ring: 210 80% 55%;
   }
 }
 
@@ -181,5 +183,23 @@
     transform: rotateY(8deg) rotateX(4deg) scale(1.07) translateZ(20px);
     box-shadow: 0px 15px 35px -10px hsla(var(--primary), 0.4); /* Using primary for shadow */
   }
-}
 
+  .surprise-dialog-bg {
+    background-image: url('https://placehold.co/600x400.png?text=Romantic+Flower+BG'); /* Placeholder for actual flower bg */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .surprise-dialog-bg::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: hsla(var(--card) / 0.8); /* Use card background with transparency for readability */
+    z-index: 1;
+    border-radius: inherit; /* Match parent's border radius if dialog content has one */
+  }
+  .surprise-dialog-bg > * {
+    position: relative; /* Ensure content is above the overlay */
+    z-index: 2;
+  }
+}

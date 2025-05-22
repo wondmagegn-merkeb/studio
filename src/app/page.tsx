@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Image from 'next/image'; // Import Image component
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Heart, Gift, Flower2 } from 'lucide-react'; 
 import ParticleBackground from '@/components/eternal-devotion/ParticleBackground';
@@ -15,6 +15,7 @@ import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
 import FamilyTree from '@/components/eternal-devotion/FamilyTree';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
 import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
+import FirstVisitModal from '@/components/eternal-devotion/FirstVisitModal'; // Added this line
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 
 
@@ -42,6 +43,7 @@ export default function EternalDevotionPage() {
         <meta name="description" content={`A special dedication to ${recipientName} from ${senderName}.`} />
       </Head>
 
+      <FirstVisitModal /> {/* Added this component here */}
       <ParticleBackground />
       <NavigationBar />
 
@@ -66,8 +68,13 @@ export default function EternalDevotionPage() {
             </Button>
             
             <Dialog open={isSurpriseMessageVisible} onOpenChange={setIsSurpriseMessageVisible}>
-              <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-md p-6 sm:p-8">
+              <DialogContent className="surprise-dialog-bg bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-md p-6 sm:p-8">
                 <div className="flex flex-col items-center justify-center text-center">
+                  {/* Background image is handled by surprise-dialog-bg class */}
+                  {/* Image element here is for the foreground flower image, if still desired. 
+                      If the background is the main flower, this specific image can be removed or changed.
+                      For now, I'll keep it as it was to show the centered flower icon over the new background.
+                  */}
                   <div className="relative w-full max-w-xs h-48 sm:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden shadow-lg">
                     <Image 
                       src="https://placehold.co/400x300.png" 
@@ -75,6 +82,7 @@ export default function EternalDevotionPage() {
                       layout="fill" 
                       objectFit="cover"
                       data-ai-hint="flowers romantic bouquet"
+                      className="opacity-0" /* Make this invisible if background is the main flower, or style differently */
                     />
                   </div>
                   <Flower2 className="w-16 h-16 sm:w-20 sm:h-20 text-primary mb-3 sm:mb-4 pulse-gentle" strokeWidth={1.5} />
@@ -82,7 +90,7 @@ export default function EternalDevotionPage() {
                     <DialogTitle className="text-3xl sm:text-4xl font-script text-primary">My Dearest Love,</DialogTitle>
                   </DialogHeader>
                   <DialogDescription className="text-lg sm:text-xl my-3 sm:my-4 text-card-foreground/90 leading-relaxed">
-                    You are the most precious flower in the garden of my heart. Every moment with you is a dream I never want to wake from. My love for you grows deeper with every passing day.
+                    You are the most precious flower in the garden of my heart. Every moment with you is a dream I never want to wake from. My love for you grows deeper with every passing day. This little surprise is just a whisper of the adoration I feel.
                   </DialogDescription>
                   <DialogFooter className="mt-4 sm:mt-6">
                     <DialogClose asChild>
@@ -122,4 +130,3 @@ export default function EternalDevotionPage() {
     </>
   );
 }
-

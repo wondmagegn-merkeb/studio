@@ -16,52 +16,52 @@ interface Song {
 // IMPORTANT: User must update this playlist with actual song paths and details
 const playlist: Song[] = [
   { 
-    src: "", // Example: "/music/song1.mp3"
-    title: "First Romantic Melody", 
-    artist: "Our Love Story", 
+    src: "", // Example: "/music/our-special-song.mp3"
+    title: "Our Special Tune", 
+    artist: "A Melody of Love", 
     lyrics: `(Verse 1)
-A whisper soft, a gentle start,
-Two souls entwined, a beating heart.
-This is the first note, sweet and low,
-Of a love story, beginning to grow.
+In a world of fleeting moments, you're my constant star,
+A beacon shining brightly, no matter how near or far.
+With every beat, my heart composes a symphony for you,
+A love song whispered softly, in everything I do.
 
 (Chorus)
-Our serenade, for you and me,
-Playing on, for eternity.
-Each word a vow, each note a kiss,
-Lost in this moment, pure love's bliss.`
+This is our special tune, a melody just for us,
+Woven with threads of laughter, and a love that's truly plus.
+Dancing to its rhythm, in sunshine or in rain,
+Forever in this moment, again and yet again.`
   },
   { 
-    src: "", // Example: "/music/song2.mp3"
-    title: "Echoes of Our Laughter", 
-    artist: "Joyful Hearts", 
+    src: "", // Example: "/music/serenade-of-stars.mp3"
+    title: "Serenade of Stars", 
+    artist: "Cosmic Harmony", 
     lyrics: `(Verse 1)
-Remember days, beneath the sun,
-Where every moment, joy had spun.
-Your happy laugh, a melody,
-Echoing through my memory.
+Beneath a velvet sky, where constellations gleam,
+We found a universe of love, living out a dream.
+Each star a silent witness, to the promises we made,
+In this celestial ballet, our destinies persuade.
 
 (Chorus)
-These are the echoes, bright and clear,
-Chasing away all doubt and fear.
-Our special song, a joyful sound,
-The happiest love, I've ever found.`
+A serenade of stars, for you, my guiding light,
+Illuminating pathways, through the darkest night.
+Our love's a constellation, forever shining true,
+My heart orbits only around the wonder that is you.`
   },
   { 
-    src: "", // Example: "/music/song3.mp3"
-    title: "Forever's Promise", 
-    artist: "Eternal Devotion", 
+    src: "", // Example: "/music/echoes-of-forever.mp3"
+    title: "Echoes of Forever", 
+    artist: "Timeless Vows", 
     lyrics: `(Verse 1)
-Through changing seasons, come what may,
-My love for you won't fade away.
-A promise whispered, soft and true,
-My forever starts and ends with you.
+Time may dance and seasons turn, the world may rearrange,
+But one thing stays unaltered, a love that will not change.
+Like echoes in a canyon, my devotion will resound,
+The truest, deepest feeling, that ever could be found.
 
 (Chorus)
-This is our promise, sealed with a tune,
-Beneath the stars, beneath the moon.
-Hand in hand, our journey's long,
-Forever together, where we belong.`
+These are the echoes of forever, a promise I hold dear,
+With every passing moment, my love for you is clear.
+Hand in hand we'll journey, 'til the end of all our days,
+Lost in love's sweet echoes, in a hundred thousand ways.`
   },
 ];
 
@@ -75,10 +75,9 @@ const MusicControl = () => {
   const hasPlayableSongs = playlist.length > 0 && playlist.some(song => song.src);
 
   useEffect(() => {
-    // Component is ready after mount for browser APIs
-    setIsReady(true);
+    setIsReady(true); // Component is ready for browser APIs after mount
   }, []);
-
+  
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !currentSong?.src) {
@@ -86,30 +85,27 @@ const MusicControl = () => {
       setIsPlaying(false);
       return;
     }
-
+  
     const wasPlayingBeforeSrcChange = isPlaying;
     
-    if (audio.src !== currentSong.src) {
+    if (audio.src !== currentSong.src) { // Check if src actually changed
         audio.src = currentSong.src;
-        audio.load(); // Important to load the new source
+        audio.load(); 
     }
-
+  
     if (wasPlayingBeforeSrcChange) {
       audio.play().catch(e => {
         console.warn('Error playing new song after switch:', e);
         setIsPlaying(false);
       });
-    } else {
-      // If it wasn't playing, do nothing here, play is initiated by togglePlayPause or initial autoplay
     }
-
-  }, [currentSongIndex, currentSong?.src]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSongIndex, currentSong?.src]); // Removed 'isPlaying' from dependencies
 
   // Effect for initial autoplay of the first song
   useEffect(() => {
     const audio = audioRef.current;
     if (isReady && audio && currentSongIndex === 0 && playlist[0]?.src && !isPlaying) {
-      // Ensure src is set for the first song if not already
       if (audio.src !== playlist[0].src) {
         audio.src = playlist[0].src;
         audio.load();
@@ -120,11 +116,12 @@ const MusicControl = () => {
         })
         .catch(error => {
           console.warn("Audio autoplay for the first song failed. User interaction might be required.", error);
-          setIsPlaying(false);
+          setIsPlaying(false); 
         });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isReady, playlist[0]?.src]); // Depends on the first song's src and component readiness
+  }, [isReady, playlist[0]?.src]); // Depends only on isReady and the first song's src
+  
 
   const togglePlayPause = useCallback(() => {
     if (!audioRef.current || !currentSong?.src) return;
@@ -136,7 +133,7 @@ const MusicControl = () => {
         .then(() => setIsPlaying(true))
         .catch(error => {
           console.error("Error playing audio:", error);
-          setIsPlaying(false);
+          setIsPlaying(false); // Ensure state is false if play fails
         });
     }
   }, [isPlaying, currentSong?.src]);
@@ -207,8 +204,8 @@ const MusicControl = () => {
           </div>
 
           {!hasPlayableSongs && (
-            <p className="text-xs text-muted-foreground mt-6 p-2 bg-muted/50 rounded-md">
-              To enjoy the playlist, please update the <code>playlist</code> array in the <code>MusicControl.tsx</code> file with your actual song file paths and details for each of the 3 songs. Autoplay of the first song will be attempted.
+             <p className="text-xs text-muted-foreground mt-6 p-2 bg-muted/50 rounded-md">
+              To enjoy the playlist, please update the <code>playlist</code> array in the <code>MusicControl.tsx</code> file with your actual song file paths (<code>src</code> field) and details for each of the 3 songs. Autoplay of the first song will be attempted.
             </p>
           )}
         </CardContent>
