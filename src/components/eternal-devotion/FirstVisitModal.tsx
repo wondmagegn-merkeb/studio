@@ -27,7 +27,6 @@ const FirstVisitModal = () => {
   const [selectedProfile, setSelectedProfile] = useState<{ pp: string; alt: string; message: string; hint: string } | null>(null);
 
   useEffect(() => {
-    // Removed localStorage check to show modal on every visit/reload for now
     const randomFlowerIndex = Math.floor(Math.random() * flowerImages.length);
     const randomProfileIndex = Math.floor(Math.random() * profileMessages.length);
     
@@ -35,16 +34,15 @@ const FirstVisitModal = () => {
     setSelectedProfile(profileMessages[randomProfileIndex]);
     
     setIsOpen(true);
-    // Removed localStorage.setItem('eternalDevotionVisited', 'true');
   }, []);
 
   if (!isOpen || !selectedFlower || !selectedProfile) {
-    return null; // Don't render anything if modal shouldn't be shown or data isn't ready
+    return null; 
   }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-lg p-6 sm:p-8 text-center">
+      <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-lg md:max-w-2xl lg:max-w-3xl p-6 sm:p-8 text-center">
         <DialogHeader className="mb-4">
           <DialogTitle className="text-4xl font-script text-primary flex items-center justify-center gap-2">
             <Sparkles className="w-8 h-8 text-secondary animate-pulse" />
@@ -53,18 +51,22 @@ const FirstVisitModal = () => {
           </DialogTitle>
         </DialogHeader>
         
-        <div className="space-y-6 my-6">
-          <div className="relative w-full max-w-sm mx-auto h-56 sm:h-64 rounded-lg overflow-hidden shadow-lg border-2 border-secondary/50">
-            <Image
-              src={selectedFlower.src}
-              alt={selectedFlower.alt}
-              layout="fill"
-              objectFit="cover"
-              data-ai-hint={selectedFlower.hint}
-            />
+        <div className="my-6 flex flex-col md:flex-row md:items-center md:gap-6 lg:gap-8">
+          {/* Flower Image Section */}
+          <div className="md:w-1/2 mb-6 md:mb-0">
+            <div className="relative w-full max-w-sm mx-auto md:max-w-none h-56 sm:h-64 md:h-72 lg:h-80 rounded-lg overflow-hidden shadow-lg border-2 border-secondary/50">
+              <Image
+                src={selectedFlower.src}
+                alt={selectedFlower.alt}
+                layout="fill"
+                objectFit="cover"
+                data-ai-hint={selectedFlower.hint}
+              />
+            </div>
           </div>
 
-          <div className="flex flex-col items-center space-y-3">
+          {/* Profile Picture and Message Section */}
+          <div className="md:w-1/2 flex flex-col items-center space-y-3">
             <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden shadow-md border-4 border-primary">
               <Image
                 src={selectedProfile.pp}
