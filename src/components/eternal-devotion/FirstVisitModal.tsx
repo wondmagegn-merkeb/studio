@@ -46,7 +46,7 @@ const FirstVisitModal = () => {
         <DialogHeader className="mb-4">
           <DialogTitle className="text-4xl font-script text-primary flex items-center justify-center gap-2">
             <Sparkles className="w-8 h-8 text-secondary animate-pulse" />
-            A Special Welcome!
+            Welcome My Girl
             <Sparkles className="w-8 h-8 text-secondary animate-pulse" />
           </DialogTitle>
         </DialogHeader>
