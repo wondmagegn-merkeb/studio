@@ -4,7 +4,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, ChevronLeft, ChevronRight, Music2 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // Removed CardDescription
 
 interface Song {
   src: string;
@@ -75,7 +75,7 @@ const MusicControl = () => {
   const hasPlayableSongs = playlist.length > 0 && playlist.some(song => song.src);
 
   useEffect(() => {
-    setIsReady(true); // Component is ready for browser APIs after mount
+    setIsReady(true); 
   }, []);
   
   useEffect(() => {
@@ -88,7 +88,7 @@ const MusicControl = () => {
   
     const wasPlayingBeforeSrcChange = isPlaying;
     
-    if (audio.src !== currentSong.src) { // Check if src actually changed
+    if (audio.src !== currentSong.src) { 
         audio.src = currentSong.src;
         audio.load(); 
     }
@@ -100,9 +100,8 @@ const MusicControl = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentSongIndex, currentSong?.src]); // Removed 'isPlaying' from dependencies
+  }, [currentSongIndex, currentSong?.src]); 
 
-  // Effect for initial autoplay of the first song
   useEffect(() => {
     const audio = audioRef.current;
     if (isReady && audio && currentSongIndex === 0 && playlist[0]?.src && !isPlaying) {
@@ -120,7 +119,7 @@ const MusicControl = () => {
         });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isReady, playlist[0]?.src]); // Depends only on isReady and the first song's src
+  }, [isReady, playlist[0]?.src]); 
   
 
   const togglePlayPause = useCallback(() => {
@@ -133,7 +132,7 @@ const MusicControl = () => {
         .then(() => setIsPlaying(true))
         .catch(error => {
           console.error("Error playing audio:", error);
-          setIsPlaying(false); // Ensure state is false if play fails
+          setIsPlaying(false); 
         });
     }
   }, [isPlaying, currentSong?.src]);
@@ -157,11 +156,7 @@ const MusicControl = () => {
           <CardTitle className="text-3xl font-script text-primary flex items-center justify-center gap-2">
             <Music2 className="h-7 w-7" /> Our Playlist
           </CardTitle>
-          {currentSong && (
-            <CardDescription className="text-sm text-foreground/80 pt-1">
-              {currentSong.title} - {currentSong.artist}
-            </CardDescription>
-          )}
+          {/* Removed CardDescription for song title and artist */}
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-center space-x-3 mb-6">
@@ -199,13 +194,11 @@ const MusicControl = () => {
           
           <audio ref={audioRef} onEnded={handleSongEnd} />
           
-          <div className="text-left max-h-60 overflow-y-auto p-4 bg-background/50 rounded-md whitespace-pre-line text-sm text-foreground/90 mb-6">
-            {currentSong?.lyrics.trim() || "Lyrics will appear here..."}
-          </div>
+          {/* Removed lyrics display div */}
 
           {!hasPlayableSongs && (
              <p className="text-xs text-muted-foreground mt-6 p-2 bg-muted/50 rounded-md">
-              To enjoy the playlist, please update the <code>playlist</code> array in the <code>MusicControl.tsx</code> file with your actual song file paths (<code>src</code> field) and details for each of the 3 songs. Autoplay of the first song will be attempted.
+              Playlist is empty. Update <code>MusicControl.tsx</code> with song paths.
             </p>
           )}
         </CardContent>

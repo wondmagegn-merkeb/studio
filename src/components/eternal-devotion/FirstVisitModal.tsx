@@ -27,18 +27,15 @@ const FirstVisitModal = () => {
   const [selectedProfile, setSelectedProfile] = useState<{ pp: string; alt: string; message: string; hint: string } | null>(null);
 
   useEffect(() => {
-    // This effect runs only on the client after mount
-    const hasVisited = localStorage.getItem('eternalDevotionVisited');
-    if (!hasVisited) {
-      const randomFlowerIndex = Math.floor(Math.random() * flowerImages.length);
-      const randomProfileIndex = Math.floor(Math.random() * profileMessages.length);
-      
-      setSelectedFlower(flowerImages[randomFlowerIndex]);
-      setSelectedProfile(profileMessages[randomProfileIndex]);
-      
-      setIsOpen(true);
-      localStorage.setItem('eternalDevotionVisited', 'true');
-    }
+    // Removed localStorage check to show modal on every visit/reload for now
+    const randomFlowerIndex = Math.floor(Math.random() * flowerImages.length);
+    const randomProfileIndex = Math.floor(Math.random() * profileMessages.length);
+    
+    setSelectedFlower(flowerImages[randomFlowerIndex]);
+    setSelectedProfile(profileMessages[randomProfileIndex]);
+    
+    setIsOpen(true);
+    // Removed localStorage.setItem('eternalDevotionVisited', 'true');
   }, []);
 
   if (!isOpen || !selectedFlower || !selectedProfile) {
