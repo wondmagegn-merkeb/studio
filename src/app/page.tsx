@@ -15,7 +15,7 @@ import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
 import FamilyTree from '@/components/eternal-devotion/FamilyTree';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
 import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
-import FirstVisitModal from '@/components/eternal-devotion/FirstVisitModal'; // Added this line
+import FirstVisitModal from '@/components/eternal-devotion/FirstVisitModal';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 
 
@@ -28,8 +28,8 @@ export default function EternalDevotionPage() {
   }, []);
 
   const countdownEvents = [
-    { title: "My Queen's Arrival (Gift from God)", targetDate: "2025-08-15T00:00:00" }, 
-    { title: "Our Second Year With Love", targetDate: "2025-06-01T00:00:00" } 
+    { title: "My Queen's Arrival (Gift from God)", targetDate: "2025-12-09T00:00:00" }, 
+    { title: "Our Second Year With Love", targetDate: "2026-03-06T00:00:00" } 
   ];
 
   const recipientName = "My Beautiful Girl";
@@ -43,7 +43,7 @@ export default function EternalDevotionPage() {
         <meta name="description" content={`A special dedication to ${recipientName} from ${senderName}.`} />
       </Head>
 
-      <FirstVisitModal /> {/* Added this component here */}
+      <FirstVisitModal />
       <ParticleBackground />
       <NavigationBar />
 
@@ -70,11 +70,7 @@ export default function EternalDevotionPage() {
             <Dialog open={isSurpriseMessageVisible} onOpenChange={setIsSurpriseMessageVisible}>
               <DialogContent className="surprise-dialog-bg bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-md p-6 sm:p-8">
                 <div className="flex flex-col items-center justify-center text-center">
-                  {/* Background image is handled by surprise-dialog-bg class */}
-                  {/* Image element here is for the foreground flower image, if still desired. 
-                      If the background is the main flower, this specific image can be removed or changed.
-                      For now, I'll keep it as it was to show the centered flower icon over the new background.
-                  */}
+                  
                   <div className="relative w-full max-w-xs h-48 sm:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden shadow-lg">
                     <Image 
                       src="https://placehold.co/400x300.png" 
@@ -82,7 +78,7 @@ export default function EternalDevotionPage() {
                       layout="fill" 
                       objectFit="cover"
                       data-ai-hint="flowers romantic bouquet"
-                      className="opacity-0" /* Make this invisible if background is the main flower, or style differently */
+                      className="opacity-0" 
                     />
                   </div>
                   <Flower2 className="w-16 h-16 sm:w-20 sm:h-20 text-primary mb-3 sm:mb-4 pulse-gentle" strokeWidth={1.5} />
@@ -130,3 +126,4 @@ export default function EternalDevotionPage() {
     </>
   );
 }
+
