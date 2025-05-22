@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState, useRef, useCallback } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog"; // Added DialogClose
+import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from "@/components/ui/dialog"; // Added DialogTitle
 import Autoplay from "embla-carousel-autoplay";
 import { Maximize, Film, Grid, X } from 'lucide-react';
 
@@ -48,10 +48,15 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
   const [selectedImage, setSelectedImage] = useState<PhotoData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const autoplayPlugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true, stopOnMouseEnter: true })); // Adjusted delay
+  const autoplayPlugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true, stopOnMouseEnter: true }));
 
   const toggleViewMode = () => {
     setViewMode(prevMode => prevMode === 'carousel' ? 'grid' : 'carousel');
+  };
+  
+  const openModalWithImage = (photo: PhotoData) => {
+    setSelectedImage(photo);
+    setIsModalOpen(true);
   };
 
   const handleModalOpenChange = useCallback((open: boolean) => {
@@ -79,15 +84,15 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
               align: "start",
               loop: photos.length > (carouselItemBasis.includes('lg:basis-1/3') ? 3 : (carouselItemBasis.includes('md:basis-1/2') ? 2 : 1)),
             }}
-            className="w-full max-w-6xl mx-auto"
+            className="w-full max-w-4xl sm:max-w-5xl md:max-w-6xl mx-auto"
           >
             <CarouselContent>
               {photos.map((photo, index) => (
                 <CarouselItem key={index} className={carouselItemBasis}>
-                  <div className="p-1 md:p-2"> {/* Added more padding */}
+                  <div className="p-1 md:p-2">
                     <Card className="overflow-hidden shadow-lg rounded-xl border-2 border-primary/30 group">
                       <CardContent className="p-0 relative">
-                        <DialogTrigger asChild onClick={() => setSelectedImage(photo)}>
+                        <DialogTrigger asChild onClick={() => openModalWithImage(photo)}>
                           <div className="relative w-full cursor-pointer">
                             <Image
                               src={photo.src}
@@ -113,11 +118,12 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
             <CarouselNext className="text-primary hover:bg-primary/10 border-primary/50 mr-2 sm:mr-0 disabled:opacity-40"/>
           </Carousel>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-4 px-2"> {/* Adjusted gap */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-4 px-2">
             {photos.map((photo, index) => (
-              <DialogTrigger key={index} asChild onClick={() => setSelectedImage(photo)}>
+              <DialogTrigger key={index} asChild>
                 <Card 
                   className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg group cursor-pointer"
+                  onClick={() => openModalWithImage(photo)}
                 >
                   <CardContent className="p-0 relative">
                     <Image
@@ -140,6 +146,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
 
         {selectedImage && (
           <DialogContent className="max-w-3xl w-[90vw] h-auto p-1 sm:p-2 bg-card/95 backdrop-blur-lg border-primary/50 rounded-xl">
+            <DialogTitle className="sr-only">{selectedImage.alt}</DialogTitle>
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
@@ -167,7 +174,7 @@ const PhotoGallery = () => {
     <section 
       id="gallery" 
       aria-labelledby="gallery-title" 
-      className="py-8 px-2 sm:px-4 space-y-12 bg-primary/5 rounded-2xl shadow-inner backdrop-blur-sm mt-12 mb-12 border border-primary/10" // Updated styling
+      className="py-8 px-2 sm:px-4 space-y-12 bg-primary/5 rounded-2xl shadow-inner backdrop-blur-sm mt-12 mb-12 border border-primary/10"
     >
       <h2 id="gallery-title" className="text-5xl font-script text-center mb-12 text-primary drop-shadow-md pt-4">Gallery of Our Love</h2>
       
@@ -187,10 +194,11 @@ const PhotoGallery = () => {
         initialView="carousel"
         carouselAspectRatio="aspect-[16/9]"
         gridAspectRatio="aspect-[4/3]"
-        carouselItemBasis="basis-full md:basis-1/2 lg:basis-1/1" // Changed to 1/1 for our photos to be single slide
+        carouselItemBasis="basis-full md:basis-1/2 lg:basis-1/1"
       />
     </section>
   );
 };
 
 export default PhotoGallery;
+
