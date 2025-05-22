@@ -3,8 +3,9 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image'; // Import Image component
 import { Button } from '@/components/ui/button';
-import { Heart, Gift, Flower2 } from 'lucide-react'; // Changed Rose to Flower2
+import { Heart, Gift, Flower2 } from 'lucide-react'; 
 import ParticleBackground from '@/components/eternal-devotion/ParticleBackground';
 import NavigationBar from '@/components/eternal-devotion/NavigationBar';
 import HeroSection from '@/components/eternal-devotion/HeroSection';
@@ -67,7 +68,16 @@ export default function EternalDevotionPage() {
             <Dialog open={isSurpriseMessageVisible} onOpenChange={setIsSurpriseMessageVisible}>
               <DialogContent className="bg-card text-card-foreground shadow-2xl rounded-xl border-primary/50 max-w-md p-6 sm:p-8">
                 <div className="flex flex-col items-center justify-center text-center">
-                  <Flower2 className="w-20 h-20 sm:w-24 sm:h-24 text-primary mb-4 sm:mb-6 pulse-gentle" strokeWidth={1.5} />
+                  <div className="relative w-full max-w-xs h-48 sm:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden shadow-lg">
+                    <Image 
+                      src="https://placehold.co/400x300.png" 
+                      alt="Beautiful Flowers for My Love" 
+                      layout="fill" 
+                      objectFit="cover"
+                      data-ai-hint="flowers romantic bouquet"
+                    />
+                  </div>
+                  <Flower2 className="w-16 h-16 sm:w-20 sm:h-20 text-primary mb-3 sm:mb-4 pulse-gentle" strokeWidth={1.5} />
                   <DialogHeader className="mb-2 sm:mb-3">
                     <DialogTitle className="text-3xl sm:text-4xl font-script text-primary">My Dearest Love,</DialogTitle>
                   </DialogHeader>
@@ -112,3 +122,4 @@ export default function EternalDevotionPage() {
     </>
   );
 }
+
