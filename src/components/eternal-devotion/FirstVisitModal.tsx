@@ -73,7 +73,7 @@ const FirstVisitModal = () => {
                 alt={selectedProfile.alt}
                 layout="fill"
                 objectFit="cover"
-                data-ai-hint={selectedProfile.src.startsWith('http') ? selectedProfile.hint : undefined}
+                data-ai-hint={selectedProfile.pp.startsWith('http') ? selectedProfile.hint : undefined}
               />
             </div>
             <DialogDescription className="text-xl text-card-foreground/90 italic px-4">
