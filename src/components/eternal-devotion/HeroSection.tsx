@@ -43,7 +43,7 @@ export default function HeroSection({ recipientName }: HeroSectionProps) {
       <div className="md:w-1/2 lg:w-3/5 flex justify-center md:justify-end items-center w-full md:h-full mt-10 md:mt-0 fade-in-element" style={{ animationDelay: '0.5s' }}>
         <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] rounded-2xl overflow-hidden shadow-2xl border-2 border-primary/50 transform md:-rotate-3 hover:rotate-0 transition-all duration-300 ease-in-out group">
           <Image
-            src="/images/her-portrait.jpg" 
+            src="/images/her-main-portrait.jpg" 
             alt={`Portrait of ${recipientName}`}
             layout="fill"
             objectFit="cover"

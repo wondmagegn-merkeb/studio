@@ -5,17 +5,17 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
-import { Sparkles, Flower } from 'lucide-react'; // Using generic Flower icon
+import { Sparkles, Flower } from 'lucide-react';
 
 const flowerImages = [
-  { src: "https://placehold.co/400x300.png", alt: "Beautiful Pink Roses", hint: "pink roses bouquet" },
+  { src: "/images/welcome-flower-1.jpg", alt: "Beautiful Pink Roses for Welcome", hint: "" }, // Updated to local path
   { src: "https://placehold.co/400x300.png", alt: "Elegant White Lilies", hint: "white lilies elegant" },
   { src: "https://placehold.co/400x300.png", alt: "Vibrant Sunflowers", hint: "sunflowers vibrant happy" },
   { src: "https://placehold.co/400x300.png", alt: "Delicate Cherry Blossoms", hint: "cherry blossoms delicate" },
 ];
 
 const profileMessages = [
-  { pp: "https://placehold.co/200x200.png", alt: "Her smiling face", message: "Your smile is the brightest star in my sky. ✨", hint: "woman smiling portrait" },
+  { pp: "/images/welcome-profile-1.jpg", alt: "Her smiling face for Welcome", message: "Your smile is the brightest star in my sky. ✨", hint: "" }, // Updated to local path
   { pp: "https://placehold.co/200x200.png", alt: "Her looking thoughtful", message: "Lost in the beauty of your thoughts, my love. 💭", hint: "woman thoughtful candid" },
   { pp: "https://placehold.co/200x200.png", alt: "Her joyful laugh", message: "Your laughter is my favorite song. 🎶", hint: "woman laughing joyful" },
   { pp: "https://placehold.co/200x200.png", alt: "Her gentle gaze", message: "In your eyes, I find my home. ❤️", hint: "woman gaze gentle" },
@@ -60,7 +60,7 @@ const FirstVisitModal = () => {
                 alt={selectedFlower.alt}
                 layout="fill"
                 objectFit="cover"
-                data-ai-hint={selectedFlower.hint}
+                data-ai-hint={selectedFlower.src.startsWith('http') ? selectedFlower.hint : undefined}
               />
             </div>
           </div>
@@ -73,7 +73,7 @@ const FirstVisitModal = () => {
                 alt={selectedProfile.alt}
                 layout="fill"
                 objectFit="cover"
-                data-ai-hint={selectedProfile.hint}
+                data-ai-hint={selectedProfile.src.startsWith('http') ? selectedProfile.hint : undefined}
               />
             </div>
             <DialogDescription className="text-xl text-card-foreground/90 italic px-4">

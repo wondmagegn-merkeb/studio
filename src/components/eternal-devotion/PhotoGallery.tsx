@@ -6,12 +6,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState, useRef, useCallback } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from "@/components/ui/dialog"; // Added DialogTitle
+import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
 import { Maximize, Film, Grid, X } from 'lucide-react';
 
 const herPhotosData = [
-  { src: "https://placehold.co/600x800.png", alt: "Elegant portrait", hint: "woman elegant fashion" },
+  { src: "/images/gallery-her-photo-1.jpg", alt: "Her beautiful smile", hint: "" }, // Updated to local path
   { src: "https://placehold.co/600x800.png", alt: "Smiling brightly", hint: "woman smiling happy" },
   { src: "https://placehold.co/600x800.png", alt: "Candid moment of joy", hint: "woman candid joy" },
   { src: "https://placehold.co/600x800.png", alt: "Thoughtful and serene", hint: "woman thoughtful serene" },
@@ -20,7 +20,7 @@ const herPhotosData = [
 ];
 
 const ourPhotosData = [
-  { src: "https://placehold.co/800x600.png", alt: "Our first adventure together", hint: "couple adventure landscape" },
+  { src: "/images/gallery-our-photo-1.jpg", alt: "Our first adventure together", hint: "" }, // Example update to local path
   { src: "https://placehold.co/800x600.png", alt: "Watching the sunset", hint: "couple sunset romantic" },
   { src: "https://placehold.co/800x600.png", alt: "Sharing a laugh", hint: "couple laughing candid" },
   { src: "https://placehold.co/800x600.png", alt: "Celebrating a special occasion", hint: "couple celebration festive" },
@@ -82,7 +82,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
             plugins={[autoplayPlugin.current]}
             opts={{
               align: "start",
-              loop: photos.length > (carouselItemBasis.includes('lg:basis-1/3') ? 3 : (carouselItemBasis.includes('md:basis-1/2') ? 2 : 1)),
+              loop: photos.length > (carouselItemBasis.includes('basis-full sm:basis-1/2 lg:basis-1/3') ? 3 : (carouselItemBasis.includes('md:basis-1/2') ? 2 : 1)),
             }}
             className="w-full max-w-4xl sm:max-w-5xl md:max-w-6xl mx-auto"
           >
@@ -100,8 +100,8 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
                               width={800}
                               height={600}
                               className={`object-cover w-full h-auto ${carouselAspectRatio} transition-transform duration-300 group-hover:scale-105`}
-                              data-ai-hint={photo.hint}
-                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              data-ai-hint={photo.src.startsWith('http') ? photo.hint : undefined}
+                              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             />
                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <Maximize className="h-10 w-10 text-white/80" />
@@ -132,7 +132,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
                       width={400}
                       height={300}
                       className={`object-cover w-full h-auto ${gridAspectRatio} transition-transform group-hover:scale-105`}
-                      data-ai-hint={photo.hint}
+                      data-ai-hint={photo.src.startsWith('http') ? photo.hint : undefined}
                     />
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Maximize className="h-8 w-8 text-white" />
@@ -153,7 +153,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
               width={1200}
               height={900}
               className="object-contain w-full h-auto max-h-[85vh] rounded-lg"
-              data-ai-hint={selectedImage.hint}
+              data-ai-hint={selectedImage.src.startsWith('http') ? selectedImage.hint : undefined}
             />
             <DialogClose asChild>
               <Button variant="ghost" size="icon" className="absolute top-2 right-2 sm:top-3 sm:right-3 text-primary-foreground bg-primary/70 hover:bg-primary z-50 h-8 w-8 sm:h-9 sm:w-9">
@@ -201,4 +201,3 @@ const PhotoGallery = () => {
 };
 
 export default PhotoGallery;
-

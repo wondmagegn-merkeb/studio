@@ -73,12 +73,11 @@ export default function EternalDevotionPage() {
                   
                   <div className="relative w-full max-w-xs h-48 sm:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden shadow-lg">
                     <Image 
-                      src="https://placehold.co/400x300.png" 
+                      src="/images/surprise-dialog-flower.jpg" // Updated to local path
                       alt="Beautiful Flowers for My Love" 
                       layout="fill" 
                       objectFit="cover"
-                      data-ai-hint="flowers romantic bouquet"
-                      className="opacity-0" 
+                      className="opacity-0" // Kept opacity-0 as bg is main, adjust if this image is primary
                     />
                   </div>
                   <Flower2 className="w-16 h-16 sm:w-20 sm:h-20 text-primary mb-3 sm:mb-4 pulse-gentle" strokeWidth={1.5} />
