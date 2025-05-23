@@ -16,25 +16,47 @@ import FamilyTree from '@/components/eternal-devotion/FamilyTree';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
 import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
 import FirstVisitModal from '@/components/eternal-devotion/FirstVisitModal';
+import PersonalizationSection from '@/components/eternal-devotion/PersonalizationSection'; // Added import
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 
+
+const RECIPIENT_NAME_KEY = 'eternalDevotionRecipientName';
+const SENDER_NAME_KEY = 'eternalDevotionSenderName';
 
 export default function EternalDevotionPage() {
   const [isSurpriseMessageVisible, setIsSurpriseMessageVisible] = useState(false);
   const [currentYear, setCurrentYear] = useState<number | null>(null);
+  
+  // State for dynamic names
+  const [recipientName, setRecipientName] = useState("My Beautiful Girl");
+  const [senderName, setSenderName] = useState("Your Loving Partner");
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
+
+    // Load names from localStorage on mount
+    const storedRecipientName = localStorage.getItem(RECIPIENT_NAME_KEY);
+    const storedSenderName = localStorage.getItem(SENDER_NAME_KEY);
+
+    if (storedRecipientName) {
+      setRecipientName(storedRecipientName);
+    }
+    if (storedSenderName) {
+      setSenderName(storedSenderName);
+    }
   }, []);
+
+  const handleNamesUpdate = (data: { recipientName: string; senderName: string }) => {
+    setRecipientName(data.recipientName);
+    setSenderName(data.senderName);
+    localStorage.setItem(RECIPIENT_NAME_KEY, data.recipientName);
+    localStorage.setItem(SENDER_NAME_KEY, data.senderName);
+  };
 
   const countdownEvents = [
     { title: "My Queen's Arrival (Gift from God)", targetDate: "2025-12-09T00:00:00" }, 
     { title: "Our Second Year With Love", targetDate: "2026-03-06T00:00:00" } 
   ];
-
-  const recipientName = "My Beautiful Girl";
-  const senderName = "Your Loving Partner";
-
 
   return (
     <>
@@ -56,6 +78,12 @@ export default function EternalDevotionPage() {
           <PhotoGallery />
           <CountdownTimer countdownItems={countdownEvents} />
           <QuoteCarousel />
+          
+          <PersonalizationSection 
+            currentRecipientName={recipientName}
+            currentSenderName={senderName}
+            onNamesUpdate={handleNamesUpdate}
+          />
 
           <section className="text-center space-y-4 py-8" id="surprise">
             <Button 
@@ -73,11 +101,11 @@ export default function EternalDevotionPage() {
                   
                   <div className="relative w-full max-w-xs h-48 sm:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden shadow-lg">
                     <Image 
-                      src="/images/surprise-dialog-flower.jpg" // Updated to local path
+                      src="/images/surprise-dialog-flower.jpg"
                       alt="Beautiful Flowers for My Love" 
                       layout="fill" 
                       objectFit="cover"
-                      className="opacity-0" // Kept opacity-0 as bg is main, adjust if this image is primary
+                      className="opacity-0" 
                     />
                   </div>
                   <Flower2 className="w-16 h-16 sm:w-20 sm:h-20 text-primary mb-3 sm:mb-4 pulse-gentle" strokeWidth={1.5} />
@@ -125,4 +153,3 @@ export default function EternalDevotionPage() {
     </>
   );
 }
-
