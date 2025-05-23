@@ -9,19 +9,39 @@ import { Heart, Gift, Flower2 } from 'lucide-react';
 import ParticleBackground from '@/components/eternal-devotion/ParticleBackground';
 import NavigationBar from '@/components/eternal-devotion/NavigationBar';
 import HeroSection from '@/components/eternal-devotion/HeroSection';
-import PhotoGallery from '@/components/eternal-devotion/PhotoGallery';
+import PhotoGallery, { type PhotoData } from '@/components/eternal-devotion/PhotoGallery';
 import CountdownTimer from '@/components/eternal-devotion/CountdownTimer';
 import QuoteCarousel from '@/components/eternal-devotion/QuoteCarousel';
 import FamilyTree from '@/components/eternal-devotion/FamilyTree';
 import MusicControl from '@/components/eternal-devotion/MusicControl';
 import VideoHighlights from '@/components/eternal-devotion/VideoHighlights';
 import FirstVisitModal from '@/components/eternal-devotion/FirstVisitModal';
-import PersonalizationSection from '@/components/eternal-devotion/PersonalizationSection'; // Added import
+import PersonalizationSection from '@/components/eternal-devotion/PersonalizationSection';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
 
 
 const RECIPIENT_NAME_KEY = 'eternalDevotionRecipientName';
 const SENDER_NAME_KEY = 'eternalDevotionSenderName';
+
+// Default photo data - this will be the consistent base for all users
+const defaultHerPhotosData: PhotoData[] = [
+  { src: "/images/gallery-her-photo-1.jpg", alt: "Her beautiful smile", hint: "" },
+  { src: "https://placehold.co/600x800.png", alt: "Smiling brightly", hint: "woman smiling happy" },
+  { src: "https://placehold.co/600x800.png", alt: "Candid moment of joy", hint: "woman candid joy" },
+  { src: "https://placehold.co/600x800.png", alt: "Thoughtful and serene", hint: "woman thoughtful serene" },
+  { src: "https://placehold.co/600x800.png", alt: "Joyful expression in nature", hint: "woman joyful nature" },
+  { src: "https://placehold.co/600x800.png", alt: "Another beautiful shot", hint: "woman beauty outdoor" },
+];
+
+const defaultOurPhotosData: PhotoData[] = [
+  { src: "/images/gallery-our-photo-1.jpg", alt: "Our first adventure together", hint: "" },
+  { src: "https://placehold.co/800x600.png", alt: "Watching the sunset", hint: "couple sunset romantic" },
+  { src: "https://placehold.co/800x600.png", alt: "Sharing a laugh", hint: "couple laughing candid" },
+  { src: "https://placehold.co/800x600.png", alt: "Celebrating a special occasion", hint: "couple celebration festive" },
+  { src: "https://placehold.co/800x600.png", alt: "Cozy moment at home", hint: "couple cozy home" },
+  { src: "https://placehold.co/800x600.png", alt: "Exploring a new city", hint: "couple travel city" },
+];
+
 
 export default function EternalDevotionPage() {
   const [isSurpriseMessageVisible, setIsSurpriseMessageVisible] = useState(false);
@@ -30,6 +50,10 @@ export default function EternalDevotionPage() {
   // State for dynamic names
   const [recipientName, setRecipientName] = useState("My Beautiful Girl");
   const [senderName, setSenderName] = useState("Your Loving Partner");
+
+  // Photo Gallery State - initialized with defaults, additions are session-only
+  const [herPhotos, setHerPhotos] = useState<PhotoData[]>(defaultHerPhotosData);
+  const [ourPhotos, setOurPhotos] = useState<PhotoData[]>(defaultOurPhotosData);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -44,6 +68,7 @@ export default function EternalDevotionPage() {
     if (storedSenderName) {
       setSenderName(storedSenderName);
     }
+    // Note: Photo lists are NOT loaded from localStorage here anymore to ensure consistency for all users on load.
   }, []);
 
   const handleNamesUpdate = (data: { recipientName: string; senderName: string }) => {
@@ -51,6 +76,16 @@ export default function EternalDevotionPage() {
     setSenderName(data.senderName);
     localStorage.setItem(RECIPIENT_NAME_KEY, data.recipientName);
     localStorage.setItem(SENDER_NAME_KEY, data.senderName);
+  };
+
+  const handleAddHerPhoto = (newPhoto: PhotoData) => {
+    setHerPhotos(prevPhotos => [...prevPhotos, newPhoto]);
+    // Not saving to localStorage anymore
+  };
+
+  const handleAddOurPhoto = (newPhoto: PhotoData) => {
+    setOurPhotos(prevPhotos => [...prevPhotos, newPhoto]);
+    // Not saving to localStorage anymore
   };
 
   const countdownEvents = [
@@ -75,7 +110,7 @@ export default function EternalDevotionPage() {
         </div>
         
         <main className="flex-grow container mx-auto px-2 sm:px-4 py-8 space-y-16 md:space-y-20">
-          <PhotoGallery />
+          <PhotoGallery herPhotos={herPhotos} ourPhotos={ourPhotos} />
           <CountdownTimer countdownItems={countdownEvents} />
           <QuoteCarousel />
           
@@ -83,6 +118,8 @@ export default function EternalDevotionPage() {
             currentRecipientName={recipientName}
             currentSenderName={senderName}
             onNamesUpdate={handleNamesUpdate}
+            onAddHerPhoto={handleAddHerPhoto}
+            onAddOurPhoto={handleAddOurPhoto}
           />
 
           <section className="text-center space-y-4 py-8" id="surprise">
@@ -101,11 +138,10 @@ export default function EternalDevotionPage() {
                   
                   <div className="relative w-full max-w-xs h-48 sm:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden shadow-lg">
                     <Image 
-                      src="/images/surprise-dialog-flower.jpg"
+                      src="/images/surprise-dialog-flower.jpg" // Ensure this image exists in public/images
                       alt="Beautiful Flowers for My Love" 
                       layout="fill" 
                       objectFit="cover"
-                      className="opacity-0" 
                     />
                   </div>
                   <Flower2 className="w-16 h-16 sm:w-20 sm:h-20 text-primary mb-3 sm:mb-4 pulse-gentle" strokeWidth={1.5} />
@@ -153,3 +189,4 @@ export default function EternalDevotionPage() {
     </>
   );
 }
+
