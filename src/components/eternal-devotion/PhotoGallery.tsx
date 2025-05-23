@@ -10,28 +10,30 @@ import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from "
 import Autoplay from "embla-carousel-autoplay";
 import { Maximize, Film, Grid, X } from 'lucide-react';
 
+// Default photo data using /uploads/ path
 const herPhotosData = [
-  { src: "/images/gallery-her-photo-1.jpg", alt: "Her beautiful smile", hint: "" }, // Updated to local path
-  { src: "https://placehold.co/600x800.png", alt: "Smiling brightly", hint: "woman smiling happy" },
-  { src: "https://placehold.co/600x800.png", alt: "Candid moment of joy", hint: "woman candid joy" },
-  { src: "https://placehold.co/600x800.png", alt: "Thoughtful and serene", hint: "woman thoughtful serene" },
-  { src: "https://placehold.co/600x800.png", alt: "Joyful expression in nature", hint: "woman joyful nature" },
-  { src: "https://placehold.co/600x800.png", alt: "Another beautiful shot", hint: "woman beauty outdoor" },
+  { src: "/uploads/gallery-her-photo-1.jpg", alt: "Her beautiful smile" },
+  { src: "/uploads/gallery-her-photo-2.jpg", alt: "Smiling brightly", hint: "woman smiling happy" },
+  { src: "/uploads/gallery-her-photo-3.jpg", alt: "Candid moment of joy", hint: "woman candid joy" },
+  { src: "/uploads/gallery-her-photo-4.jpg", alt: "Thoughtful and serene", hint: "woman thoughtful serene" },
+  { src: "/uploads/gallery-her-photo-5.jpg", alt: "Joyful expression in nature", hint: "woman joyful nature" },
+  { src: "/uploads/gallery-her-photo-6.jpg", alt: "Another beautiful shot", hint: "woman beauty outdoor" },
 ];
 
 const ourPhotosData = [
-  { src: "/images/gallery-our-photo-1.jpg", alt: "Our first adventure together", hint: "" }, // Example update to local path
-  { src: "https://placehold.co/800x600.png", alt: "Watching the sunset", hint: "couple sunset romantic" },
-  { src: "https://placehold.co/800x600.png", alt: "Sharing a laugh", hint: "couple laughing candid" },
-  { src: "https://placehold.co/800x600.png", alt: "Celebrating a special occasion", hint: "couple celebration festive" },
-  { src: "https://placehold.co/800x600.png", alt: "Cozy moment at home", hint: "couple cozy home" },
-  { src: "https://placehold.co/800x600.png", alt: "Exploring a new city", hint: "couple travel city" },
+  { src: "/uploads/gallery-our-photo-1.jpg", alt: "Our first adventure together" },
+  { src: "/uploads/gallery-our-photo-2.jpg", alt: "Watching the sunset", hint: "couple sunset romantic" },
+  { src: "/uploads/gallery-our-photo-3.jpg", alt: "Sharing a laugh", hint: "couple laughing candid" },
+  { src: "/uploads/gallery-our-photo-4.jpg", alt: "Celebrating a special occasion", hint: "couple celebration festive" },
+  { src: "/uploads/gallery-our-photo-5.jpg", alt: "Cozy moment at home", hint: "couple cozy home" },
+  { src: "/uploads/gallery-our-photo-6.jpg", alt: "Exploring a new city", hint: "couple travel city" },
 ];
+
 
 interface PhotoData {
   src: string;
   alt: string;
-  hint: string;
+  hint?: string;
 }
 
 interface PhotoSectionProps {
@@ -100,7 +102,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
                               width={800}
                               height={600}
                               className={`object-cover w-full h-auto ${carouselAspectRatio} transition-transform duration-300 group-hover:scale-105`}
-                              data-ai-hint={photo.src.startsWith('http') ? photo.hint : undefined}
+                              data-ai-hint={photo.hint}
                               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             />
                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -132,7 +134,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
                       width={400}
                       height={300}
                       className={`object-cover w-full h-auto ${gridAspectRatio} transition-transform group-hover:scale-105`}
-                      data-ai-hint={photo.src.startsWith('http') ? photo.hint : undefined}
+                      data-ai-hint={photo.hint}
                     />
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Maximize className="h-8 w-8 text-white" />
@@ -153,7 +155,7 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
               width={1200}
               height={900}
               className="object-contain w-full h-auto max-h-[85vh] rounded-lg"
-              data-ai-hint={selectedImage.src.startsWith('http') ? selectedImage.hint : undefined}
+              data-ai-hint={selectedImage.hint}
             />
             <DialogClose asChild>
               <Button variant="ghost" size="icon" className="absolute top-2 right-2 sm:top-3 sm:right-3 text-primary-foreground bg-primary/70 hover:bg-primary z-50 h-8 w-8 sm:h-9 sm:w-9">
@@ -167,7 +169,6 @@ const PhotoSection: React.FC<PhotoSectionProps> = ({ title, photos, initialView 
     </div>
   );
 };
-
 
 const PhotoGallery = () => {
   return (

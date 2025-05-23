@@ -8,21 +8,20 @@ import { PlayCircle, Music3 } from 'lucide-react';
 const videoData = [
   {
     id: 1,
-    src: "/images/video-poster-1.jpg", // Updated to local path
+    src: "/uploads/video-poster-1.jpg", 
     alt: "Fun moment captured on video",
     caption: "Dancing in the rain 🎶",
-    hint: "",
   },
   {
     id: 2,
-    src: "https://placehold.co/300x533.png",
+    src: "/uploads/video-poster-2.jpg",
     alt: "Silly face compilation",
     caption: "Our goofy adventures 😂",
     hint: "couple silly faces",
   },
   {
     id: 3,
-    src: "https://placehold.co/300x533.png",
+    src: "/uploads/video-poster-3.jpg",
     alt: "Singing our favorite song",
     caption: "Karaoke night stars ⭐",
     hint: "couple singing karaoke",
@@ -49,7 +48,7 @@ const VideoHighlights = () => {
                 width={300}
                 height={533}
                 className="object-cover w-full h-auto aspect-[9/16]"
-                data-ai-hint={video.src.startsWith('http') ? video.hint : undefined}
+                data-ai-hint={video.hint}
               />
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <PlayCircle className="h-16 w-16 text-white/80" />

@@ -28,11 +28,11 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ recipientName, senderName }) =>
           <CardContent className="flex flex-col items-center space-y-4">
             <div className="flex items-center space-x-4">
               <Avatar className="w-20 h-20 border-2 border-secondary">
-                <AvatarImage src="/images/family-her-father.jpg" alt="Her Father" />
+                <AvatarImage src="/uploads/family-her-father.jpg" alt="Her Father" />
                 <AvatarFallback>HF</AvatarFallback>
               </Avatar>
               <Avatar className="w-20 h-20 border-2 border-secondary">
-                <AvatarImage src="/images/family-her-mother.jpg" alt="Her Mother" />
+                <AvatarImage src="/uploads/family-her-mother.jpg" alt="Her Mother" />
                 <AvatarFallback>HM</AvatarFallback>
               </Avatar>
             </div>
@@ -50,11 +50,11 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ recipientName, senderName }) =>
           <CardContent className="flex flex-col items-center space-y-4">
             <div className="flex items-center space-x-4">
               <Avatar className="w-20 h-20 border-2 border-secondary">
-                <AvatarImage src="/images/family-my-father.jpg" alt="My Father" />
+                <AvatarImage src="/uploads/family-my-father.jpg" alt="My Father" />
                 <AvatarFallback>MF</AvatarFallback>
               </Avatar>
               <Avatar className="w-20 h-20 border-2 border-secondary">
-                <AvatarImage src="/images/family-my-mother.jpg" alt="My Mother" />
+                <AvatarImage src="/uploads/family-my-mother.jpg" alt="My Mother" />
                 <AvatarFallback>MM</AvatarFallback>
               </Avatar>
             </div>
@@ -81,7 +81,7 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ recipientName, senderName }) =>
             <div className="profile-card-container">
               <div className="profile-card-3d flex flex-col items-center space-y-3 bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
                 <Avatar className="w-28 h-28 border-4 border-primary">
-                  <AvatarImage src="/images/family-recipient-uni.jpg" alt={`${recipientName} at Wachemo University`} />
+                  <AvatarImage src="/uploads/family-recipient-uni.jpg" alt={`${recipientName} at Wachemo University`} />
                   <AvatarFallback>{recipientName.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <p className="font-semibold text-lg text-foreground">{recipientName}</p>
@@ -97,7 +97,7 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ recipientName, senderName }) =>
             <div className="profile-card-container">
               <div className="profile-card-3d flex flex-col items-center space-y-3 bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
                 <Avatar className="w-28 h-28 border-4 border-primary">
-                  <AvatarImage src="/images/family-sender-uni.jpg" alt={`${senderName} at Wachemo University`} />
+                  <AvatarImage src="/uploads/family-sender-uni.jpg" alt={`${senderName} at Wachemo University`} />
                   <AvatarFallback>{senderName.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <p className="font-semibold text-lg text-foreground">{senderName}</p>
@@ -122,15 +122,15 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ recipientName, senderName }) =>
         </CardHeader>
         <CardContent className="flex justify-center items-center space-x-4 p-6">
           <Avatar className="w-16 h-16 border-2 border-accent">
-            <AvatarImage src="/images/family-future-child-1.jpg" alt="Future Child 1" />
+            <AvatarImage src="/uploads/family-future-child-1.jpg" alt="Future Child 1" />
             <AvatarFallback>?</AvatarFallback>
           </Avatar>
           <Avatar className="w-16 h-16 border-2 border-accent">
-            <AvatarImage src="https://placehold.co/128x128.png" alt="Future Child 2" data-ai-hint="child illustration joyful" />
+            <AvatarImage src="/uploads/family-future-child-2.jpg" alt="Future Child 2" data-ai-hint="child illustration joyful" />
             <AvatarFallback>?</AvatarFallback>
           </Avatar>
           <Avatar className="w-16 h-16 border-2 border-accent">
-            <AvatarImage src="https://placehold.co/128x128.png" alt="Future Child 3" data-ai-hint="child illustration cute" />
+            <AvatarImage src="/uploads/family-future-child-3.jpg" alt="Future Child 3" data-ai-hint="child illustration cute" />
             <AvatarFallback>?</AvatarFallback>
           </Avatar>
         </CardContent>
